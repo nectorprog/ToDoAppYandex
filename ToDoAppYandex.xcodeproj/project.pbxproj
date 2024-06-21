@@ -15,11 +15,14 @@
 		CEBED1F52C25B6BC00EEE8D6 /* ToDoAppYandexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1F42C25B6BC00EEE8D6 /* ToDoAppYandexTests.swift */; };
 		CEBED1FF2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1FE2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.swift */; };
 		CEBED2012C25B6BC00EEE8D6 /* ToDoAppYandexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2002C25B6BC00EEE8D6 /* ToDoAppYandexUITestsLaunchTests.swift */; };
-		CEBED20F2C25B81C00EEE8D6 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED20E2C25B81C00EEE8D6 /* Importance.swift */; };
 		CEBED2112C25B83800EEE8D6 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2102C25B83800EEE8D6 /* TodoItem.swift */; };
 		CEBED2122C25B83800EEE8D6 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2102C25B83800EEE8D6 /* TodoItem.swift */; };
-		CEBED2152C25B86A00EEE8D6 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2142C25B86A00EEE8D6 /* FileCache.swift */; };
-		CEBED21A2C25B8D100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2192C25B8D100EEE8D6 /* TodoItem+ParsingJSON.swift */; };
+		CEBED21C2C25BC1C00EEE8D6 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED21B2C25BC1C00EEE8D6 /* Importance.swift */; };
+		CEBED21D2C25BC1C00EEE8D6 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED21B2C25BC1C00EEE8D6 /* Importance.swift */; };
+		CEBED21F2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED21E2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift */; };
+		CEBED2202C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED21E2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift */; };
+		CEBED2222C25BCB100EEE8D6 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2212C25BCB100EEE8D6 /* FileCache.swift */; };
+		CEBED2232C25BCB100EEE8D6 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2212C25BCB100EEE8D6 /* FileCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,10 +54,10 @@
 		CEBED1FA2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppYandexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBED1FE2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppYandexUITests.swift; sourceTree = "<group>"; };
 		CEBED2002C25B6BC00EEE8D6 /* ToDoAppYandexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppYandexUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		CEBED20E2C25B81C00EEE8D6 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
 		CEBED2102C25B83800EEE8D6 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
-		CEBED2142C25B86A00EEE8D6 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
-		CEBED2192C25B8D100EEE8D6 /* TodoItem+ParsingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+ParsingJSON.swift"; sourceTree = "<group>"; };
+		CEBED21B2C25BC1C00EEE8D6 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
+		CEBED21E2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+ParsingJSON.swift"; sourceTree = "<group>"; };
+		CEBED2212C25BCB100EEE8D6 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,8 +150,8 @@
 		CEBED20D2C25B7E600EEE8D6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CEBED20E2C25B81C00EEE8D6 /* Importance.swift */,
 				CEBED2102C25B83800EEE8D6 /* TodoItem.swift */,
+				CEBED21B2C25BC1C00EEE8D6 /* Importance.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -156,7 +159,7 @@
 		CEBED2132C25B85300EEE8D6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				CEBED2142C25B86A00EEE8D6 /* FileCache.swift */,
+				CEBED2212C25BCB100EEE8D6 /* FileCache.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -178,7 +181,7 @@
 		CEBED2182C25B8A900EEE8D6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CEBED2192C25B8D100EEE8D6 /* TodoItem+ParsingJSON.swift */,
+				CEBED21E2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -315,10 +318,10 @@
 			files = (
 				CEBED2112C25B83800EEE8D6 /* TodoItem.swift in Sources */,
 				CEBED1E42C25B6BA00EEE8D6 /* ContentView.swift in Sources */,
-				CEBED20F2C25B81C00EEE8D6 /* Importance.swift in Sources */,
+				CEBED2222C25BCB100EEE8D6 /* FileCache.swift in Sources */,
+				CEBED21C2C25BC1C00EEE8D6 /* Importance.swift in Sources */,
 				CEBED1E62C25B6BA00EEE8D6 /* Item.swift in Sources */,
-				CEBED2152C25B86A00EEE8D6 /* FileCache.swift in Sources */,
-				CEBED21A2C25B8D100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */,
+				CEBED21F2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */,
 				CEBED1E22C25B6BA00EEE8D6 /* ToDoYandexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,8 +330,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEBED21D2C25BC1C00EEE8D6 /* Importance.swift in Sources */,
 				CEBED2122C25B83800EEE8D6 /* TodoItem.swift in Sources */,
 				CEBED1F52C25B6BC00EEE8D6 /* ToDoAppYandexTests.swift in Sources */,
+				CEBED2232C25BCB100EEE8D6 /* FileCache.swift in Sources */,
+				CEBED2202C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

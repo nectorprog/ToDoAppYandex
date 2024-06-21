@@ -3,27 +3,43 @@ import XCTest
 
 final class ToDoAppYandexTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    // Массив TodoItem, который будет использоваться в тестах
+        var todoItems: [TodoItem]!
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        override func setUpWithError() throws {
+            try super.setUpWithError()
+            // Создаем объекты TodoItem для тестирования
+            todoItems = [TodoItem](repeating: TodoItem(text: "Test Task", importance: .medium, isReady: false, createdAt: Date()), count: 100)
         }
-    }
+
+        override func tearDownWithError() throws {
+            // Освобождаем память
+            todoItems = nil
+            try super.tearDownWithError()
+        }
+
+        // Тест создания TodoItem и проверка его свойств
+        func testTodoItemProperties() throws {
+            let item = TodoItem(text: "Test TodoItem", importance: .high, isReady: true, createdAt: Date())
+            XCTAssertEqual(item.text, "Test TodoItem")
+            XCTAssertEqual(item.importance, .high)
+            XCTAssertTrue(item.isReady)
+        }
+
+        // Тест сериализации в JSON и проверка условий сериализации
+        func testTodoItemJsonSerialization() throws {
+            let item = todoItems[0]
+            let json = item.json as? [String: Any]
+            XCTAssertNotNil(json)
+            XCTAssertNil(json?["importance"], "Importance should not be serialized if it's medium")
+            XCTAssertEqual(json?["text"] as? String, item.text)
+        }
+
+        // Тест производительности сериализации объектов в JSON
+        func testPerformanceJsonSerialization() throws {
+            measure {
+                _ = todoItems.map { $0.json }
+            }
+        }
 
 }
