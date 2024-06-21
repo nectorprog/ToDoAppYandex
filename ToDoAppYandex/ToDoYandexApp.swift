@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct ToDoAppYandexApp: App {
+struct ToDoYandexApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,

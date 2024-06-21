@@ -1,10 +1,3 @@
-//
-//  ToDoAppYandexTests.swift
-//  ToDoAppYandexTests
-//
-//  Created by Владислав Пономаренко on 21.06.2024.
-//
-
 import XCTest
 @testable import ToDoAppYandex
 
