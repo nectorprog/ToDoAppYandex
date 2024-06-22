@@ -1,8 +1,7 @@
 import XCTest
 @testable import ToDoAppYandex
 
-final class ToDoAppYandexTests: XCTestCase {
-    
+final class ToDoItemTests: XCTestCase {
     // Постоянные даты для тестирования
     let fixedCreatedAt = Date(timeIntervalSince1970: 1609459200) // 1 Jan 2021 00:00:00 GMT
     let fixedDeadline = Date(timeIntervalSince1970: 1609545600)  // 2 Jan 2021 00:00:00 GMT
@@ -32,10 +31,9 @@ final class ToDoAppYandexTests: XCTestCase {
     // Создание задачи с максимальным набором параметров
     func testTodoItemCreationWithMaximalParametrs() {
         let id = "custom_id"
-        let text = "Test Task "
+        let text = "Test Task"
         let importance = Importance.low
         let isReady = true
-        
         
         let sut = TodoItem(id: id, text: text, importance: importance, deadline: fixedDeadline, isReady: isReady, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         
@@ -127,20 +125,141 @@ final class ToDoAppYandexTests: XCTestCase {
         XCTAssertNotEqual(todoItem1.id, todoItem2.id)
     }
     
+    func testParseMinimalValidJSONString() {
+        let jsonString = """
+        {
+            "id": "123",
+            "text": "Test Task",
+            "isReady": true,
+            "createdAt": 1609459200
+        }
+        """
+    
+        let item = TodoItem.parse(json: jsonString)
+        
+        XCTAssertNotNil(item)
+        XCTAssertEqual(item?.id, "123")
+        XCTAssertEqual(item?.text, "Test Task")
+        XCTAssertEqual(item?.isReady, true)
+        XCTAssertEqual(item?.createdAt, fixedCreatedAt)
+        XCTAssertEqual(item?.importance, .medium)
+        XCTAssertNil(item?.deadline)
+        XCTAssertNil(item?.updatedAt)
+    }
+
+    func testParseMaximalValidJSONString() {
+        let jsonString = """
+        {
+            "id": "123",
+            "text": "Test Task",
+            "importance": "Важная",
+            "deadline": 1609545600,
+            "isReady": true,
+            "createdAt": 1609459200,
+            "updatedAt": 1609632000
+        }
+        """
+        
+        let item = TodoItem.parse(json: jsonString)
+        
+        XCTAssertNotNil(item)
+        XCTAssertEqual(item?.id, "123")
+        XCTAssertEqual(item?.text, "Test Task")
+        XCTAssertEqual(item?.importance, .high)
+        XCTAssertEqual(item?.deadline, fixedDeadline)
+        XCTAssertEqual(item?.isReady, true)
+        XCTAssertEqual(item?.createdAt, fixedCreatedAt)
+        XCTAssertEqual(item?.updatedAt, fixedUpdatedAt)
+    }
+    
+    func testParseInvalidJSONString() {
+        let jsonString = """
+        {
+            "id": "123",
+            "text": "Test Task",
+            "isReady": true,
+            "createdAt": "invalid date"
+        }
+        """
+        
+        let item = TodoItem.parse(json: jsonString)
+        
+        XCTAssertNil(item)
+    }
+
+    func testParseJSONWithUnknownImportance() {
+        let jsonString = """
+        {
+            "id": "123",
+            "text": "Test Task",
+            "importance": "Unknown",
+            "isReady": true,
+            "createdAt": 1609459200
+        }
+        """
+        
+        let item = TodoItem.parse(json: jsonString)
+        
+        XCTAssertNotNil(item)
+        XCTAssertEqual(item?.importance, .medium)
+    }
+    
+    // MARK: - CSV Tests
+    
+    func testParseMinimalValidCSVString() {
+        let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,,true,1609459200,,"
+        
+        let item = TodoItem.parse(csv: csvString)
+        
+        XCTAssertNotNil(item)
+        XCTAssertEqual(item?.id, "123")
+        XCTAssertEqual(item?.text, "Test Task")
+        XCTAssertEqual(item?.importance, .medium)
+        XCTAssertEqual(item?.isReady, true)
+        XCTAssertEqual(item?.createdAt, fixedCreatedAt)
+        XCTAssertNil(item?.deadline)
+        XCTAssertNil(item?.updatedAt)
+    }
+
+    func testParseMaximalValidCSVString() {
+        let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,Важная,true,1609459200,1609545600,1609632000"
+        
+        let item = TodoItem.parse(csv: csvString)
+        
+        XCTAssertNotNil(item)
+        XCTAssertEqual(item?.id, "123")
+        XCTAssertEqual(item?.text, "Test Task")
+        XCTAssertEqual(item?.importance, .high)
+        XCTAssertEqual(item?.isReady, true)
+        XCTAssertEqual(item?.createdAt, fixedCreatedAt)
+        XCTAssertEqual(item?.deadline, fixedDeadline)
+        XCTAssertEqual(item?.updatedAt, fixedUpdatedAt)
+    }
+    
+    func testParseInvalidCSVString() {
+        let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,true,1609459200,,"
+        
+        let item = TodoItem.parse(csv: csvString)
+        
+        XCTAssertNil(item)
+    }
+
+    func testCSVSerialization() {
+        let todoItem = TodoItem(id: "123", text: "Test Task", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
+        let csvString = todoItem.toCSV
+        
+        let expectedCSVString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,Важная,true,1609459200,1609545600,1609632000"
+        
+        XCTAssertEqual(csvString, expectedCSVString)
+    }
+    
+    
+    
     
 
-//        // Тест производительности сериализации объектов в JSON
-//        func testPerformanceJsonSerialization() throws {
-//            measure(
-//                metrics: [
-//                  XCTClockMetric(),
-//                  XCTCPUMetric(),
-//                  XCTStorageMetric(),
-//                  XCTMemoryMetric()
-//                ]
-//              ) {
-//
-//              }
-//        }
+    // Тест производительности сериализации объектов в JSON
+    func testPerformanceJsonSerialization() throws {
+        self.measure {}
+    }
 
 }

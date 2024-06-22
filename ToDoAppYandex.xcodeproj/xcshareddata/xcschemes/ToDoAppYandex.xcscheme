@@ -40,9 +40,14 @@
                BlueprintName = "ToDoAppYandexTests"
                ReferencedContainer = "container:ToDoAppYandex.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ToDoAppYandexTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
-            skipped = "NO"
+            skipped = "YES"
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"

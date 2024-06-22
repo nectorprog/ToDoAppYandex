@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0380FD2C2626120052E050 /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0380FC2C2626110052E050 /* FileCacheTests.swift */; };
+		CE0380FF2C2629430052E050 /* TodoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0380FE2C2629430052E050 /* TodoItemTests.swift */; };
+		CE23A4B32C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */; };
+		CE23A4B42C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */; };
+		CE23A4B62C2648EB003A48F1 /* Date+UTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23A4B52C2648EB003A48F1 /* Date+UTC.swift */; };
+		CE23A4B72C2648EB003A48F1 /* Date+UTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23A4B52C2648EB003A48F1 /* Date+UTC.swift */; };
 		CEBED1E22C25B6BA00EEE8D6 /* ToDoYandexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */; };
 		CEBED1E42C25B6BA00EEE8D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E32C25B6BA00EEE8D6 /* ContentView.swift */; };
 		CEBED1E62C25B6BA00EEE8D6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E52C25B6BA00EEE8D6 /* Item.swift */; };
 		CEBED1E82C25B6BB00EEE8D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBED1E72C25B6BB00EEE8D6 /* Assets.xcassets */; };
 		CEBED1EB2C25B6BB00EEE8D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBED1EA2C25B6BB00EEE8D6 /* Preview Assets.xcassets */; };
-		CEBED1F52C25B6BC00EEE8D6 /* ToDoAppYandexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1F42C25B6BC00EEE8D6 /* ToDoAppYandexTests.swift */; };
-		CEBED1FF2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1FE2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.swift */; };
-		CEBED2012C25B6BC00EEE8D6 /* ToDoAppYandexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2002C25B6BC00EEE8D6 /* ToDoAppYandexUITestsLaunchTests.swift */; };
 		CEBED2112C25B83800EEE8D6 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2102C25B83800EEE8D6 /* TodoItem.swift */; };
 		CEBED2122C25B83800EEE8D6 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2102C25B83800EEE8D6 /* TodoItem.swift */; };
 		CEBED21C2C25BC1C00EEE8D6 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED21B2C25BC1C00EEE8D6 /* Importance.swift */; };
 		CEBED21D2C25BC1C00EEE8D6 /* Importance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED21B2C25BC1C00EEE8D6 /* Importance.swift */; };
-		CEBED21F2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED21E2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift */; };
-		CEBED2202C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED21E2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift */; };
 		CEBED2222C25BCB100EEE8D6 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2212C25BCB100EEE8D6 /* FileCache.swift */; };
 		CEBED2232C25BCB100EEE8D6 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2212C25BCB100EEE8D6 /* FileCache.swift */; };
 /* End PBXBuildFile section */
@@ -33,16 +34,13 @@
 			remoteGlobalIDString = CEBED1DD2C25B6B900EEE8D6;
 			remoteInfo = ToDoAppYandex;
 		};
-		CEBED1FB2C25B6BC00EEE8D6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CEBED1D62C25B6B900EEE8D6 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CEBED1DD2C25B6B900EEE8D6;
-			remoteInfo = ToDoAppYandex;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE0380FC2C2626110052E050 /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
+		CE0380FE2C2629430052E050 /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
+		CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+Parsing.swift"; sourceTree = "<group>"; };
+		CE23A4B52C2648EB003A48F1 /* Date+UTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+UTC.swift"; sourceTree = "<group>"; };
 		CEBED1DE2C25B6B900EEE8D6 /* ToDoAppYandex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoAppYandex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoYandexApp.swift; sourceTree = "<group>"; };
 		CEBED1E32C25B6BA00EEE8D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,13 +48,8 @@
 		CEBED1E72C25B6BB00EEE8D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEBED1EA2C25B6BB00EEE8D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CEBED1F02C25B6BC00EEE8D6 /* ToDoAppYandexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppYandexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEBED1F42C25B6BC00EEE8D6 /* ToDoAppYandexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppYandexTests.swift; sourceTree = "<group>"; };
-		CEBED1FA2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppYandexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEBED1FE2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppYandexUITests.swift; sourceTree = "<group>"; };
-		CEBED2002C25B6BC00EEE8D6 /* ToDoAppYandexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppYandexUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CEBED2102C25B83800EEE8D6 /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		CEBED21B2C25BC1C00EEE8D6 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
-		CEBED21E2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+ParsingJSON.swift"; sourceTree = "<group>"; };
 		CEBED2212C25BCB100EEE8D6 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,13 +68,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEBED1F72C25B6BC00EEE8D6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -90,7 +76,6 @@
 			children = (
 				CEBED1E02C25B6BA00EEE8D6 /* ToDoAppYandex */,
 				CEBED1F32C25B6BC00EEE8D6 /* ToDoAppYandexTests */,
-				CEBED1FD2C25B6BC00EEE8D6 /* ToDoAppYandexUITests */,
 				CEBED1DF2C25B6B900EEE8D6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +85,6 @@
 			children = (
 				CEBED1DE2C25B6B900EEE8D6 /* ToDoAppYandex.app */,
 				CEBED1F02C25B6BC00EEE8D6 /* ToDoAppYandexTests.xctest */,
-				CEBED1FA2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -133,18 +117,10 @@
 		CEBED1F32C25B6BC00EEE8D6 /* ToDoAppYandexTests */ = {
 			isa = PBXGroup;
 			children = (
-				CEBED1F42C25B6BC00EEE8D6 /* ToDoAppYandexTests.swift */,
+				CE0380FC2C2626110052E050 /* FileCacheTests.swift */,
+				CE0380FE2C2629430052E050 /* TodoItemTests.swift */,
 			);
 			path = ToDoAppYandexTests;
-			sourceTree = "<group>";
-		};
-		CEBED1FD2C25B6BC00EEE8D6 /* ToDoAppYandexUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CEBED1FE2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.swift */,
-				CEBED2002C25B6BC00EEE8D6 /* ToDoAppYandexUITestsLaunchTests.swift */,
-			);
-			path = ToDoAppYandexUITests;
 			sourceTree = "<group>";
 		};
 		CEBED20D2C25B7E600EEE8D6 /* Models */ = {
@@ -181,7 +157,8 @@
 		CEBED2182C25B8A900EEE8D6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CEBED21E2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift */,
+				CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */,
+				CE23A4B52C2648EB003A48F1 /* Date+UTC.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -224,24 +201,6 @@
 			productReference = CEBED1F02C25B6BC00EEE8D6 /* ToDoAppYandexTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CEBED1F92C25B6BC00EEE8D6 /* ToDoAppYandexUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CEBED20A2C25B6BC00EEE8D6 /* Build configuration list for PBXNativeTarget "ToDoAppYandexUITests" */;
-			buildPhases = (
-				CEBED1F62C25B6BC00EEE8D6 /* Sources */,
-				CEBED1F72C25B6BC00EEE8D6 /* Frameworks */,
-				CEBED1F82C25B6BC00EEE8D6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CEBED1FC2C25B6BC00EEE8D6 /* PBXTargetDependency */,
-			);
-			name = ToDoAppYandexUITests;
-			productName = ToDoAppYandexUITests;
-			productReference = CEBED1FA2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -256,10 +215,6 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					CEBED1EF2C25B6BC00EEE8D6 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = CEBED1DD2C25B6B900EEE8D6;
-					};
-					CEBED1F92C25B6BC00EEE8D6 = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = CEBED1DD2C25B6B900EEE8D6;
 					};
@@ -280,7 +235,6 @@
 			targets = (
 				CEBED1DD2C25B6B900EEE8D6 /* ToDoAppYandex */,
 				CEBED1EF2C25B6BC00EEE8D6 /* ToDoAppYandexTests */,
-				CEBED1F92C25B6BC00EEE8D6 /* ToDoAppYandexUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -302,13 +256,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEBED1F82C25B6BC00EEE8D6 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -320,8 +267,9 @@
 				CEBED1E42C25B6BA00EEE8D6 /* ContentView.swift in Sources */,
 				CEBED2222C25BCB100EEE8D6 /* FileCache.swift in Sources */,
 				CEBED21C2C25BC1C00EEE8D6 /* Importance.swift in Sources */,
+				CE23A4B32C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */,
 				CEBED1E62C25B6BA00EEE8D6 /* Item.swift in Sources */,
-				CEBED21F2C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */,
+				CE23A4B62C2648EB003A48F1 /* Date+UTC.swift in Sources */,
 				CEBED1E22C25B6BA00EEE8D6 /* ToDoYandexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,18 +280,11 @@
 			files = (
 				CEBED21D2C25BC1C00EEE8D6 /* Importance.swift in Sources */,
 				CEBED2122C25B83800EEE8D6 /* TodoItem.swift in Sources */,
-				CEBED1F52C25B6BC00EEE8D6 /* ToDoAppYandexTests.swift in Sources */,
+				CE0380FD2C2626120052E050 /* FileCacheTests.swift in Sources */,
+				CE23A4B72C2648EB003A48F1 /* Date+UTC.swift in Sources */,
+				CE23A4B42C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */,
 				CEBED2232C25BCB100EEE8D6 /* FileCache.swift in Sources */,
-				CEBED2202C25BC8100EEE8D6 /* TodoItem+ParsingJSON.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEBED1F62C25B6BC00EEE8D6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CEBED1FF2C25B6BC00EEE8D6 /* ToDoAppYandexUITests.swift in Sources */,
-				CEBED2012C25B6BC00EEE8D6 /* ToDoAppYandexUITestsLaunchTests.swift in Sources */,
+				CE0380FF2C2629430052E050 /* TodoItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,11 +295,6 @@
 			isa = PBXTargetDependency;
 			target = CEBED1DD2C25B6B900EEE8D6 /* ToDoAppYandex */;
 			targetProxy = CEBED1F12C25B6BC00EEE8D6 /* PBXContainerItemProxy */;
-		};
-		CEBED1FC2C25B6BC00EEE8D6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CEBED1DD2C25B6B900EEE8D6 /* ToDoAppYandex */;
-			targetProxy = CEBED1FB2C25B6BC00EEE8D6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -580,42 +516,6 @@
 			};
 			name = Release;
 		};
-		CEBED20B2C25B6BC00EEE8D6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZVQAPWNH2V;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nectordev.ToDoAppYandexUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ToDoAppYandex;
-			};
-			name = Debug;
-		};
-		CEBED20C2C25B6BC00EEE8D6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZVQAPWNH2V;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nectordev.ToDoAppYandexUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ToDoAppYandex;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -642,15 +542,6 @@
 			buildConfigurations = (
 				CEBED2082C25B6BC00EEE8D6 /* Debug */,
 				CEBED2092C25B6BC00EEE8D6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CEBED20A2C25B6BC00EEE8D6 /* Build configuration list for PBXNativeTarget "ToDoAppYandexUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CEBED20B2C25B6BC00EEE8D6 /* Debug */,
-				CEBED20C2C25B6BC00EEE8D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
