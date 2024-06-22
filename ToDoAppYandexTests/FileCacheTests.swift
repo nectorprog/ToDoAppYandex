@@ -14,7 +14,8 @@ final class FileCacheTests: XCTestCase {
     override func tearDownWithError() throws {
         fileCache = nil
     }
-
+    
+    // Тестирование добавления нового элемента
     func testAddItem() {
         let item = TodoItem(id: "1", text: "Test Task", importance: .medium, deadline: fixedDeadline, isReady: false, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         fileCache.add(item: item)
@@ -22,6 +23,7 @@ final class FileCacheTests: XCTestCase {
         XCTAssertEqual(fileCache.allItems.first?.id, "1")
     }
 
+    // Тестирование добавления дублирующегося элемента
     func testAddDuplicateItem() {
         let item1 = TodoItem(id: "1", text: "Test Task", importance: .medium, deadline: fixedDeadline, isReady: false, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         let item2 = TodoItem(id: "1", text: "Test Task Duplicate", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
@@ -31,6 +33,7 @@ final class FileCacheTests: XCTestCase {
         XCTAssertEqual(fileCache.allItems.first?.text, "Test Task")
     }
 
+    // Тестирование удаления элемента
     func testRemoveItem() {
         let item = TodoItem(id: "1", text: "Test Task", importance: .medium, deadline: fixedDeadline, isReady: false, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         fileCache.add(item: item)
@@ -38,6 +41,7 @@ final class FileCacheTests: XCTestCase {
         XCTAssertEqual(fileCache.allItems.count, 0)
     }
 
+    // Тестирование сохранения и загрузки элементов в формате JSON
     func testSaveAndLoadJSON() {
         let item1 = TodoItem(id: "1", text: "Test Task 1", importance: .medium, deadline: fixedDeadline, isReady: false, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         let item2 = TodoItem(id: "2", text: "Test Task 2", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
@@ -54,7 +58,7 @@ final class FileCacheTests: XCTestCase {
         XCTAssertEqual(fileCache.allItems.last?.id, "2")
     }
 
-    
+    // Тестирование сохранения в неподдерживаемом формате
     func testSaveUnsupportedFormat() {
         let item = TodoItem(id: "1", text: "Test Task", importance: .medium, deadline: fixedDeadline, isReady: false, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         fileCache.add(item: item)
@@ -67,6 +71,7 @@ final class FileCacheTests: XCTestCase {
         XCTAssertFalse(fileManager.fileExists(atPath: url.path))
     }
 
+    // Тестирование загрузки из неподдерживаемого формата
     func testLoadUnsupportedFormat() {
         let fileName = "test.unsupported"
         fileCache.load(from: fileName, format: "unsupported")

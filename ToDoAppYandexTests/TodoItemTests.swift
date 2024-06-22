@@ -64,7 +64,7 @@ final class ToDoItemTests: XCTestCase {
     
     // Тестирование крайних значений дат
     func testTodoItemCreationWithExtremePastDates() {
-        let pastDate = Date(timeIntervalSince1970: -1000000000) // Далекое прошлое
+        let pastDate = Date(timeIntervalSince1970: -1000000000)
 
         let todoItem = TodoItem(text: "Past Task", importance: .low, deadline: pastDate, isReady: false, createdAt: pastDate)
 
@@ -74,7 +74,7 @@ final class ToDoItemTests: XCTestCase {
 
     // Тестирование крайних значений дат
     func testTodoItemCreationWithExtremeFutureDates() {
-        let futureDate = Date(timeIntervalSince1970: 32503680000) // Далекое будущее
+        let futureDate = Date(timeIntervalSince1970: 32503680000)
 
         let todoItem = TodoItem(text: "Future Task", importance: .high, deadline: futureDate, isReady: false, createdAt: futureDate)
 
@@ -125,6 +125,7 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertNotEqual(todoItem1.id, todoItem2.id)
     }
     
+    // Тестирование минимально валидной JSON-строки
     func testParseMinimalValidJSONString() {
         let jsonString = """
         {
@@ -147,6 +148,7 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertNil(item?.updatedAt)
     }
 
+    // Тестирование максимально валидной JSON-строки
     func testParseMaximalValidJSONString() {
         let jsonString = """
         {
@@ -172,6 +174,7 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertEqual(item?.updatedAt, fixedUpdatedAt)
     }
     
+    // Тестирование невалидной JSON-строки
     func testParseInvalidJSONString() {
         let jsonString = """
         {
@@ -187,6 +190,8 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertNil(item)
     }
 
+    
+    // Тестирование JSON-строки с неизвестной важностью
     func testParseJSONWithUnknownImportance() {
         let jsonString = """
         {
@@ -204,8 +209,7 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertEqual(item?.importance, .medium)
     }
     
-    // MARK: - CSV Tests
-    
+    // Тестирование минимально валидной CSV-строки
     func testParseMinimalValidCSVString() {
         let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,,true,1609459200,,"
         
@@ -220,7 +224,8 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertNil(item?.deadline)
         XCTAssertNil(item?.updatedAt)
     }
-
+    
+    // Тестирование максимально валидной CSV-строки
     func testParseMaximalValidCSVString() {
         let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,Важная,true,1609459200,1609545600,1609632000"
         
@@ -235,7 +240,7 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertEqual(item?.deadline, fixedDeadline)
         XCTAssertEqual(item?.updatedAt, fixedUpdatedAt)
     }
-    
+    // Тестирование невалидной CSV-строки
     func testParseInvalidCSVString() {
         let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,true,1609459200,,"
         
@@ -244,6 +249,7 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertNil(item)
     }
 
+    // Тестирование сериализации объекта в CSV
     func testCSVSerialization() {
         let todoItem = TodoItem(id: "123", text: "Test Task", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         let csvString = todoItem.toCSV
@@ -253,11 +259,6 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertEqual(csvString, expectedCSVString)
     }
     
-    
-    
-    
-
-    // Тест производительности сериализации объектов в JSON
     func testPerformanceJsonSerialization() throws {
         self.measure {}
     }

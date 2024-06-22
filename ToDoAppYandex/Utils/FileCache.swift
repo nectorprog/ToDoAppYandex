@@ -34,27 +34,27 @@ class FileCache {
     }
     
     private func saveToJSON(url: URL) {
-            let itemsArray = items.map { item -> [String: Any] in
-                var dict: [String: Any] = ["id": item.id, "text": item.text, "isReady": item.isReady, "createdAt": item.createdAt.unixTimestamp]
-                if item.importance != .medium {
-                    dict["importance"] = item.importance.rawValue
-                }
-                if let deadline = item.deadline {
-                    dict["deadline"] = deadline.unixTimestamp
-                }
-                if let updatedAt = item.updatedAt {
-                    dict["updatedAt"] = updatedAt.unixTimestamp
-                }
-                return dict
+        let itemsArray = items.map { item -> [String: Any] in
+            var dict: [String: Any] = ["id": item.id, "text": item.text, "isReady": item.isReady, "createdAt": item.createdAt.unixTimestamp]
+            if item.importance != .medium {
+                dict["importance"] = item.importance.rawValue
             }
-            do {
-                let jsonData = try JSONSerialization.data(withJSONObject: itemsArray, options: [])
-                try jsonData.write(to: url)
-                print("Data saved successfully to \(url).")
-            } catch {
-                print("Failed to save data: \(error)")
+            if let deadline = item.deadline {
+                dict["deadline"] = deadline.unixTimestamp
             }
+            if let updatedAt = item.updatedAt {
+                dict["updatedAt"] = updatedAt.unixTimestamp
+            }
+            return dict
         }
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: itemsArray, options: [])
+            try jsonData.write(to: url)
+            print("Data saved successfully to \(url).")
+        } catch {
+            print("Failed to save data: \(error)")
+        }
+    }
     
     private func saveToCSV(url: URL) {
         let headers = "id,text,importance,isReady,createdAt,deadline,updatedAt\n"
