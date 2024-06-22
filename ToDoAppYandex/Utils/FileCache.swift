@@ -56,23 +56,10 @@ class FileCache {
             }
         }
     
-//    private func saveToCSV(url: URL) {
-//        let headers = "id,text,importance,isReady,createdAt,deadline,updatedAt\n"
-//        let csvData = items.map { $0.toCSV.split(separator: "\n").last! }.joined(separator: "\n")
-//        let data = headers + csvData
-//        do {
-//            try data.write(to: url, atomically: true, encoding: .utf8)
-//            print("Data saved successfully to \(url).")
-//        } catch {
-//            print("Failed to save data: \(error)")
-//        }
-//    }
-    
     private func saveToCSV(url: URL) {
         let headers = "id,text,importance,isReady,createdAt,deadline,updatedAt\n"
         let csvData = items.map { $0.toCSV.split(separator: "\n").last! }.joined(separator: "\n")
         let data = headers + csvData
-        print("Saving CSV Data: \n\(data)")
         do {
             try data.write(to: url, atomically: true, encoding: .utf8)
             print("Data saved successfully to \(url).")
@@ -109,22 +96,9 @@ class FileCache {
         }
     }
     
-//    private func loadFromCSV(url: URL) {
-//        do {
-//            let data = try String(contentsOf: url, encoding: .utf8)
-//            let rows = data.split(separator: "\n")
-//            let itemsArray = rows.dropFirst().compactMap { TodoItem.parse(csv: String($0)) }
-//            items = itemsArray
-//            print("Data loaded successfully from \(url).")
-//        } catch {
-//            print("Error loading data: \(error)")
-//        }
-//    }
-    
     private func loadFromCSV(url: URL) {
         do {
             let data = try String(contentsOf: url, encoding: .utf8)
-            print("Loaded CSV Data: \n\(data)")
             let rows = data.split(separator: "\n")
             let itemsArray = rows.dropFirst().compactMap { TodoItem.parse(csv: String($0)) }
             items = itemsArray
@@ -134,7 +108,3 @@ class FileCache {
         }
     }
 }
-
-
-
-
