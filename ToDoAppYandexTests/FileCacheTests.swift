@@ -78,4 +78,31 @@ final class FileCacheTests: XCTestCase {
         
         XCTAssertEqual(fileCache.allItems.count, 0)
     }
+    
+    // Тестирование сохранения данных в формате CSV
+    func testSaveToCSV() {
+        let item1 = TodoItem(id: "1", text: "Test Task 1", importance: .low, deadline: fixedDeadline, isReady: false, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
+        let item2 = TodoItem(id: "2", text: "Test Task 2", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
+        
+        fileCache.add(item: item1)
+        fileCache.add(item: item2)
+        
+        let fileName = "test.csv"
+        let url = fileCache.getDocumentsDirectory().appendingPathComponent(fileName)
+        
+        fileCache.save(fileName: fileName, format: "csv")
+        
+        do {
+            let savedData = try String(contentsOf: url, encoding: .utf8)
+            let expectedData = """
+            id,text,importance,isReady,createdAt,deadline,updatedAt
+            1,Test Task 1,Неважная,false,1609459200,1609545600,1609632000
+            2,Test Task 2,Важная,true,1609459200,1609545600,1609632000
+            """
+            XCTAssertEqual(savedData.trimmingCharacters(in: .whitespacesAndNewlines), expectedData.trimmingCharacters(in: .whitespacesAndNewlines))
+        } catch {
+            XCTFail("Failed to read saved CSV data: \(error)")
+        }
+    }
 }
+
