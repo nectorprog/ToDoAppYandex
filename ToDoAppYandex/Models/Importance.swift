@@ -1,7 +1,7 @@
 import Foundation
 
 enum Importance: String {
-    case low = "Неважная"
-    case medium = "Обычная"
-    case high = "Важная"
+    case low = "неважная"
+    case medium = "обычная"
+    case high = "важная"
 }
