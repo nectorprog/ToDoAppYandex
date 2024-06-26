@@ -24,8 +24,6 @@
 		CEBED2232C25BCB100EEE8D6 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED2212C25BCB100EEE8D6 /* FileCache.swift */; };
 		CED6AE402C2C094900AF1790 /* FieldOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE3F2C2C094900AF1790 /* FieldOrder.swift */; };
 		CED6AE412C2C094900AF1790 /* FieldOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE3F2C2C094900AF1790 /* FieldOrder.swift */; };
-		CED6AE432C2C09C400AF1790 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE422C2C09C400AF1790 /* TestManager.swift */; };
-		CED6AE442C2C09C400AF1790 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE422C2C09C400AF1790 /* TestManager.swift */; };
 		CED6AE462C2C60C500AF1790 /* Date+Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE452C2C60C500AF1790 /* Date+Equal.swift */; };
 		CED6AE472C2C60C500AF1790 /* Date+Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE452C2C60C500AF1790 /* Date+Equal.swift */; };
 /* End PBXBuildFile section */
@@ -55,7 +53,6 @@
 		CEBED21B2C25BC1C00EEE8D6 /* Importance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importance.swift; sourceTree = "<group>"; };
 		CEBED2212C25BCB100EEE8D6 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		CED6AE3F2C2C094900AF1790 /* FieldOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldOrder.swift; sourceTree = "<group>"; };
-		CED6AE422C2C09C400AF1790 /* TestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
 		CED6AE452C2C60C500AF1790 /* Date+Equal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Equal.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,7 +105,6 @@
 				CEBED1E52C25B6BA00EEE8D6 /* Item.swift */,
 				CEBED1E72C25B6BB00EEE8D6 /* Assets.xcassets */,
 				CEBED1E92C25B6BB00EEE8D6 /* Preview Content */,
-				CED6AE422C2C09C400AF1790 /* TestManager.swift */,
 			);
 			path = ToDoAppYandex;
 			sourceTree = "<group>";
@@ -279,7 +275,6 @@
 				CEBED21C2C25BC1C00EEE8D6 /* Importance.swift in Sources */,
 				CE23A4B32C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */,
 				CEBED1E62C25B6BA00EEE8D6 /* Item.swift in Sources */,
-				CED6AE432C2C09C400AF1790 /* TestManager.swift in Sources */,
 				CEBED1E22C25B6BA00EEE8D6 /* ToDoYandexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,7 +291,6 @@
 				CEBED2232C25BCB100EEE8D6 /* FileCache.swift in Sources */,
 				CED6AE412C2C094900AF1790 /* FieldOrder.swift in Sources */,
 				CE0380FF2C2629430052E050 /* TodoItemTests.swift in Sources */,
-				CED6AE442C2C09C400AF1790 /* TestManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
