@@ -1,6 +1,6 @@
 import Foundation
 
-struct TodoItem {
+struct TodoItem: Equatable{
     let id: String
     let text: String
     let importance: Importance
@@ -83,5 +83,15 @@ struct TodoItem {
         }
 
         return TodoItem(id: id, text: text, importance: importance, deadline: deadline, isReady: isReady, createdAt: createdAt, updatedAt: updatedAt)
+    }
+    
+    static func ==(lhs: TodoItem, rhs: TodoItem) -> Bool {
+        return lhs.id == rhs.id &&
+               lhs.text == rhs.text &&
+               lhs.importance == rhs.importance &&
+               ((lhs.deadline == nil && rhs.deadline == nil) || (lhs.deadline?.isEqualRounded(to: rhs.deadline, precision: 1.0) ?? false)) &&
+               lhs.isReady == rhs.isReady &&
+               lhs.createdAt.isEqualRounded(to: rhs.createdAt, precision: 1.0) &&
+               ((lhs.updatedAt == nil && rhs.updatedAt == nil) || (lhs.updatedAt?.isEqualRounded(to: rhs.updatedAt, precision: 1.0) ?? false))
     }
 }

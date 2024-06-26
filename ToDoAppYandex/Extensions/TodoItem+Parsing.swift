@@ -11,10 +11,8 @@ extension TodoItem {
                 let id = jsonObject["id"] as? String ?? UUID().uuidString
                 guard let text = jsonObject["text"] as? String else { return nil }
                 
-                let importanceString = jsonObject["importance"] as? String ?? "medium"
-                guard let importance = Importance(rawValue: importanceString) else {
-                    return nil
-                }
+                let importanceString = jsonObject["importance"] as? String ?? Importance.medium.rawValue
+                let importance = Importance(rawValue: importanceString) ?? .medium
                 
                 let deadline: Date?
                 if let deadlineTimeInterval = jsonObject["deadline"] as? TimeInterval {
@@ -27,10 +25,12 @@ extension TodoItem {
                 
                 let createdAt: Date
                 if let createdAtTimeInterval = jsonObject["createdAt"] as? TimeInterval {
-                        createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
-                    } else {
-                        createdAt = Date()
-                    }
+                    createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
+                } else if let createdAtString = jsonObject["createdAt"] as? String, let createdAtTimeInterval = TimeInterval(createdAtString) {
+                                    createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
+                } else {
+                    return nil
+                }
                 
                 let updatedAt: Date?
                 if let updatedAtTimeInteval = jsonObject["updatedAt"] as? TimeInterval {
@@ -83,35 +83,47 @@ extension TodoItem {
         
         let fieldOrder = FieldOrder(headers: headers)
         
-        guard let idIndex = fieldOrder.idIndex,
-              let textIndex = fieldOrder.textIndex,
-              let isReadyIndex = fieldOrder.isReadyIndex,
-              let createdAtIndex = fieldOrder.createdAtIndex else { return nil }
+        guard let textIndex = fieldOrder.textIndex, textIndex < values.count else { return nil }
         
-        let id = values[idIndex]
+        let id: String
+        if let idIndex = fieldOrder.idIndex, idIndex < values.count {
+            id = values[idIndex]
+        } else {
+            id = UUID().uuidString
+        }
+        
         let text = values[textIndex]
         
         let importance: Importance
-        if let importanceIndex = fieldOrder.importanceIndex, importanceIndex < values.count {
+        if let importanceIndex = fieldOrder.importanceIndex, importanceIndex < values.count, !values[importanceIndex].isEmpty {
             importance = Importance(rawValue: values[importanceIndex]) ?? .medium
         } else {
             importance = .medium
         }
         
         let deadline: Date?
-        if let deadlineIndex = fieldOrder.deadlineIndex, deadlineIndex < values.count, let timeInterval = TimeInterval(values[deadlineIndex]) {
+        if let deadlineIndex = fieldOrder.deadlineIndex, deadlineIndex < values.count, let timeInterval = TimeInterval(values[deadlineIndex]), !values[deadlineIndex].isEmpty {
             deadline = Date(timeIntervalSince1970: timeInterval)
         } else {
             deadline = nil
         }
         
-        let isReady = values[isReadyIndex] == "true"
+        let isReady: Bool
+        if let isReadyIndex = fieldOrder.isReadyIndex, isReadyIndex < values.count {
+            isReady = values[isReadyIndex] == "true"
+        } else {
+            isReady = false
+        }
         
-        guard let createdAtTimeInterval = TimeInterval(values[createdAtIndex]) else { return nil }
-        let createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
+        let createdAt: Date
+        if let createdAtIndex = fieldOrder.createdAtIndex, createdAtIndex < values.count, let timeInterval = TimeInterval(values[createdAtIndex]) {
+            createdAt = Date(timeIntervalSince1970: timeInterval)
+        } else {
+            createdAt = Date()
+        }
         
         let updatedAt: Date?
-        if let updatedAtIndex = fieldOrder.updatedAtIndex, updatedAtIndex < values.count, let timeInterval = TimeInterval(values[updatedAtIndex]) {
+        if let updatedAtIndex = fieldOrder.updatedAtIndex, updatedAtIndex < values.count, let timeInterval = TimeInterval(values[updatedAtIndex]), !values[updatedAtIndex].isEmpty {
             updatedAt = Date(timeIntervalSince1970: timeInterval)
         } else {
             updatedAt = nil
@@ -130,10 +142,8 @@ extension TodoItem {
         headers.append("text")
         values.append(text)
         
-        if importance != .medium {
-            headers.append("importance")
-            values.append(importance.rawValue)
-        }
+        headers.append("importance")
+        values.append(importance.rawValue)
         
         if let deadline = deadline {
             headers.append("deadline")
@@ -158,3 +168,4 @@ extension TodoItem {
     }
 
 }
+

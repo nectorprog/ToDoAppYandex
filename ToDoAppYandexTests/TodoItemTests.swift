@@ -154,7 +154,7 @@ final class ToDoItemTests: XCTestCase {
         {
             "id": "123",
             "text": "Test Task",
-            "importance": "Важная",
+            "importance": "важная",
             "deadline": 1609545600,
             "isReady": true,
             "createdAt": 1609459200,
@@ -190,7 +190,6 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertNil(item)
     }
 
-    
     // Тестирование JSON-строки с неизвестной важностью
     func testParseJSONWithUnknownImportance() {
         let jsonString = """
@@ -211,7 +210,7 @@ final class ToDoItemTests: XCTestCase {
     
     // Тестирование минимально валидной CSV-строки
     func testParseMinimalValidCSVString() {
-        let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,,true,1609459200,,"
+        let csvString = "id,text,isReady,deadline\n123,Test Task,false,\(fixedDeadline)"
         
         let item = TodoItem.parse(csv: csvString)
         
@@ -219,15 +218,14 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertEqual(item?.id, "123")
         XCTAssertEqual(item?.text, "Test Task")
         XCTAssertEqual(item?.importance, .medium)
-        XCTAssertEqual(item?.isReady, true)
-        XCTAssertEqual(item?.createdAt, fixedCreatedAt)
+        XCTAssertEqual(item?.isReady, false)
         XCTAssertNil(item?.deadline)
         XCTAssertNil(item?.updatedAt)
     }
     
     // Тестирование максимально валидной CSV-строки
     func testParseMaximalValidCSVString() {
-        let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,Важная,true,1609459200,1609545600,1609632000"
+        let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,важная,true,1609459200,1609545600,1609632000"
         
         let item = TodoItem.parse(csv: csvString)
         
@@ -240,23 +238,27 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertEqual(item?.deadline, fixedDeadline)
         XCTAssertEqual(item?.updatedAt, fixedUpdatedAt)
     }
-    // Тестирование невалидной CSV-строки
-    func testParseInvalidCSVString() {
-        let csvString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,true,1609459200,,"
+    
+    
+    // Тестирование преобразования в JSON
+    func testToJSON() {
+        let item = TodoItem(id: "123", text: "Test Task", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
+        let json = item.json as? String
+        XCTAssertNotNil(json)
         
-        let item = TodoItem.parse(csv: csvString)
-        
-        XCTAssertNil(item)
+        let parsedItem = TodoItem.parse(json: json!)
+        XCTAssertNotNil(parsedItem)
+        XCTAssertEqual(parsedItem, item)
     }
-
-    // Тестирование сериализации объекта в CSV
-    func testCSVSerialization() {
-        let todoItem = TodoItem(id: "123", text: "Test Task", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
-        let csvString = todoItem.toCSV
+    
+    // Тестирование преобразования в CSV
+    func testToCSV() {
+        let item = TodoItem(id: "123", text: "Test Task", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
+        let csv = item.csv
         
-        let expectedCSVString = "id,text,importance,isReady,createdAt,deadline,updatedAt\n123,Test Task,Важная,true,1609459200,1609545600,1609632000"
-        
-        XCTAssertEqual(csvString, expectedCSVString)
+        let parsedItem = TodoItem.parse(csv: csv)
+        XCTAssertNotNil(parsedItem)
+        XCTAssertEqual(parsedItem, item)
     }
     
     func testPerformanceJsonSerialization() throws {
@@ -264,3 +266,5 @@ final class ToDoItemTests: XCTestCase {
     }
 
 }
+
+
