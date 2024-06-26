@@ -1,106 +1,160 @@
 import Foundation
 
 extension TodoItem {
-    // JSON
-    public static func parse(json: String) -> TodoItem? {
-        guard let data = json.data(using: .utf8),
-              let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
-              let dictionary = jsonObject as? [String: Any] else {
+    static func parse(json: Any) -> TodoItem? {
+        guard let jsonData = (json as? String)?.data(using: .utf8) else {
             return nil
         }
-
-        guard let id = dictionary["id"] as? String,
-              let text = dictionary["text"] as? String,
-              let isReady = dictionary["isReady"] as? Bool,
-              let createdAtTimestamp = dictionary["createdAt"] as? Int else {
-            return nil
+        
+        do {
+            if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                let id = jsonObject["id"] as? String ?? UUID().uuidString
+                guard let text = jsonObject["text"] as? String else { return nil }
+                
+                let importanceString = jsonObject["importance"] as? String ?? "medium"
+                guard let importance = Importance(rawValue: importanceString) else {
+                    return nil
+                }
+                
+                let deadline: Date?
+                if let deadlineTimeInterval = jsonObject["deadline"] as? TimeInterval {
+                    deadline = Date(timeIntervalSince1970: deadlineTimeInterval)
+                } else {
+                    deadline = nil
+                }
+                
+                let isReady = jsonObject["isReady"] as? Bool ?? false
+                
+                let createdAt: Date
+                if let createdAtTimeInterval = jsonObject["createdAt"] as? TimeInterval {
+                        createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
+                    } else {
+                        createdAt = Date()
+                    }
+                
+                let updatedAt: Date?
+                if let updatedAtTimeInteval = jsonObject["updatedAt"] as? TimeInterval {
+                    updatedAt = Date(timeIntervalSince1970: updatedAtTimeInteval)
+                } else {
+                    updatedAt = nil
+                }
+                
+                return TodoItem(id: id, text: text, importance: importance, deadline: deadline, isReady: isReady, createdAt: createdAt, updatedAt: updatedAt)
+            }
+        } catch {
+            print("Error parsing JSON: \(error)")
         }
-
-        let createdAt = Date.from(unixTimestamp: createdAtTimestamp)
-        let importanceRaw = dictionary["importance"] as? String
-        let importance = importanceRaw.flatMap { Importance(rawValue: $0) } ?? .medium
-
-        var deadline: Date? = nil
-        if let deadlineTimestamp = dictionary["deadline"] as? Int {
-            deadline = Date.from(unixTimestamp: deadlineTimestamp)
-        }
-
-        var updatedAt: Date? = nil
-        if let updatedAtTimestamp = dictionary["updatedAt"] as? Int {
-            updatedAt = Date.from(unixTimestamp: updatedAtTimestamp)
-        }
-
-        return TodoItem(id: id, text: text, importance: importance, deadline: deadline, isReady: isReady, createdAt: createdAt, updatedAt: updatedAt)
+        
+        return nil
     }
-
-    var json: String {
+    
+    var json: Any {
         var jsonDict = [String: Any]()
         jsonDict["id"] = id
         jsonDict["text"] = text
         if importance != .medium {
             jsonDict["importance"] = importance.rawValue
         }
+        
+        if let deadline {
+            jsonDict["deadline"] = deadline.timeIntervalSince1970
+        }
+        
         jsonDict["isReady"] = isReady
-        jsonDict["createdAt"] = createdAt.unixTimestamp
-        if let deadline = deadline {
-            jsonDict["deadline"] = deadline.unixTimestamp
+        jsonDict["createdAt"] = createdAt.timeIntervalSince1970
+        
+        if let updatedAt {
+            jsonDict["updatedAt"] = updatedAt.timeIntervalSince1970
         }
-        if let updatedAt = updatedAt {
-            jsonDict["updatedAt"] = updatedAt.unixTimestamp
-        }
-
+        
         if let jsonData = try? JSONSerialization.data(withJSONObject: jsonDict, options: []),
            let jsonString = String(data: jsonData, encoding: .utf8) {
             return jsonString
         }
         return "{}"
     }
-
-    // CSV
-    public static func parse(csv: String) -> TodoItem? {
-        let rows = csv.components(separatedBy: "\n")
-        guard rows.count == 2 else { return nil }
-
-        let headers = rows[0].components(separatedBy: ",")
-        let values = rows[1].components(separatedBy: ",")
-        guard headers.count == values.count else { return nil }
-
-        guard let idIndex = headers.firstIndex(of: "id"),
-              let textIndex = headers.firstIndex(of: "text"),
-              let importanceIndex = headers.firstIndex(of: "importance"),
-              let isReadyIndex = headers.firstIndex(of: "isReady"),
-              let createdAtIndex = headers.firstIndex(of: "createdAt"),
-              let deadlineIndex = headers.firstIndex(of: "deadline"),
-              let updatedAtIndex = headers.firstIndex(of: "updatedAt") else { return nil }
-
+    
+    static func parse(csv: String) -> TodoItem? {
+        let lines = csv.split(separator: "\n").map { String($0) }
+        guard lines.count >= 2 else { return nil }
+        
+        let headers = lines[0].split(separator: ",").map { String($0) }
+        let values = lines[1].split(separator: ",").map { String($0) }
+        
+        let fieldOrder = FieldOrder(headers: headers)
+        
+        guard let idIndex = fieldOrder.idIndex,
+              let textIndex = fieldOrder.textIndex,
+              let isReadyIndex = fieldOrder.isReadyIndex,
+              let createdAtIndex = fieldOrder.createdAtIndex else { return nil }
+        
         let id = values[idIndex]
         let text = values[textIndex]
-        let importance = Importance(rawValue: values[importanceIndex]) ?? .medium
-        let isReady = Bool(values[isReadyIndex]) ?? false
-        let createdAt = Date.from(unixTimestamp: Int(values[createdAtIndex]) ?? 0)
-        var deadline: Date? = nil
-        if !values[deadlineIndex].isEmpty {
-            deadline = Date.from(unixTimestamp: Int(values[deadlineIndex]) ?? 0)
+        
+        let importance: Importance
+        if let importanceIndex = fieldOrder.importanceIndex, importanceIndex < values.count {
+            importance = Importance(rawValue: values[importanceIndex]) ?? .medium
+        } else {
+            importance = .medium
         }
-        var updatedAt: Date? = nil
-        if !values[updatedAtIndex].isEmpty {
-            updatedAt = Date.from(unixTimestamp: Int(values[updatedAtIndex]) ?? 0)
+        
+        let deadline: Date?
+        if let deadlineIndex = fieldOrder.deadlineIndex, deadlineIndex < values.count, let timeInterval = TimeInterval(values[deadlineIndex]) {
+            deadline = Date(timeIntervalSince1970: timeInterval)
+        } else {
+            deadline = nil
         }
-
+        
+        let isReady = values[isReadyIndex] == "true"
+        
+        guard let createdAtTimeInterval = TimeInterval(values[createdAtIndex]) else { return nil }
+        let createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
+        
+        let updatedAt: Date?
+        if let updatedAtIndex = fieldOrder.updatedAtIndex, updatedAtIndex < values.count, let timeInterval = TimeInterval(values[updatedAtIndex]) {
+            updatedAt = Date(timeIntervalSince1970: timeInterval)
+        } else {
+            updatedAt = nil
+        }
+        
         return TodoItem(id: id, text: text, importance: importance, deadline: deadline, isReady: isReady, createdAt: createdAt, updatedAt: updatedAt)
     }
-
-    var toCSV: String {
-        let headers = ["id", "text", "importance", "isReady", "createdAt", "deadline", "updatedAt"]
+    
+    var csv: String {
+        var headers = [String]()
         var values = [String]()
+        
+        headers.append("id")
         values.append(id)
+        
+        headers.append("text")
         values.append(text)
-        values.append(importance != .medium ? importance.rawValue : "")
+        
+        if importance != .medium {
+            headers.append("importance")
+            values.append(importance.rawValue)
+        }
+        
+        if let deadline = deadline {
+            headers.append("deadline")
+            values.append(String(deadline.timeIntervalSince1970))
+        }
+        
+        headers.append("isReady")
         values.append(String(isReady))
-        values.append("\(createdAt.unixTimestamp)")
-        values.append(deadline != nil ? "\(deadline!.unixTimestamp)" : "")
-        values.append(updatedAt != nil ? "\(updatedAt!.unixTimestamp)" : "")
-
-        return headers.joined(separator: ",") + "\n" + values.joined(separator: ",")
+        
+        headers.append("createdAt")
+        values.append(String(createdAt.timeIntervalSince1970))
+        
+        if let updatedAt = updatedAt {
+            headers.append("updatedAt")
+            values.append(String(updatedAt.timeIntervalSince1970))
+        }
+        
+        let headerString = headers.joined(separator: ",")
+        let valueString = values.joined(separator: ",")
+        
+        return "\(headerString)\n\(valueString)"
     }
+
 }
