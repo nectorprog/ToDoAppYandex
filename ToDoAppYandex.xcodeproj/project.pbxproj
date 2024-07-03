@@ -11,6 +11,7 @@
 		CE0380FF2C2629430052E050 /* TodoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0380FE2C2629430052E050 /* TodoItemTests.swift */; };
 		CE23A4B32C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */; };
 		CE23A4B42C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */; };
+		CE962B472C359A5400D415C5 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B462C359A5400D415C5 /* Color+Extension.swift */; };
 		CEBED1E22C25B6BA00EEE8D6 /* ToDoYandexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */; };
 		CEBED1E42C25B6BA00EEE8D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E32C25B6BA00EEE8D6 /* ContentView.swift */; };
 		CEBED1E62C25B6BA00EEE8D6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E52C25B6BA00EEE8D6 /* Item.swift */; };
@@ -42,6 +43,7 @@
 		CE0380FC2C2626110052E050 /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		CE0380FE2C2629430052E050 /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
 		CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+Parsing.swift"; sourceTree = "<group>"; };
+		CE962B462C359A5400D415C5 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		CEBED1DE2C25B6B900EEE8D6 /* ToDoAppYandex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoAppYandex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoYandexApp.swift; sourceTree = "<group>"; };
 		CEBED1E32C25B6BA00EEE8D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */,
 				CED6AE452C2C60C500AF1790 /* Date+Equal.swift */,
+				CE962B462C359A5400D415C5 /* Color+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEBED2112C25B83800EEE8D6 /* TodoItem.swift in Sources */,
+				CE962B472C359A5400D415C5 /* Color+Extension.swift in Sources */,
 				CEBED1E42C25B6BA00EEE8D6 /* ContentView.swift in Sources */,
 				CEBED2222C25BCB100EEE8D6 /* FileCache.swift in Sources */,
 				CED6AE402C2C094900AF1790 /* FieldOrder.swift in Sources */,
