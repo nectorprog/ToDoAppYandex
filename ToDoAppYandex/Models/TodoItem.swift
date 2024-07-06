@@ -1,13 +1,15 @@
 import Foundation
 
-struct TodoItem: Equatable{
+struct TodoItem: Equatable, Identifiable{
     let id: String
-    let text: String
-    let importance: Importance
-    let deadline: Date?
-    let isReady: Bool
-    let createdAt: Date
-    let updatedAt: Date?
+    var text: String
+    var importance: Importance
+    var deadline: Date?
+    var isReady: Bool
+    var createdAt: Date
+    var updatedAt: Date?
+    var color: String
+    var category: TaskCategory
     
     init(
         id: String = UUID().uuidString,
@@ -16,7 +18,9 @@ struct TodoItem: Equatable{
         deadline: Date? = nil,
         isReady: Bool = false,
         createdAt: Date = Date(),
-        updatedAt: Date? = nil
+        updatedAt: Date? = nil,
+        color: String = "#000000",
+        category: TaskCategory = .other
     ) {
         self.id = id
         self.text = text
@@ -25,6 +29,8 @@ struct TodoItem: Equatable{
         self.isReady = isReady
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.color = color
+        self.category = category
     }
     
     var dict: [String: Any] {
