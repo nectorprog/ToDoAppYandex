@@ -9,18 +9,12 @@ struct TaskListView: View {
     @State private var isShowingSettings = false
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             Color.bPrimary.ignoresSafeArea()
             
             NavigationView {
                 VStack(spacing: 0) {
                     HStack {
-                        Button(action: {
-                            isShowingSettings = true
-                        }) {
-                            Image(systemName: "gearshape")
-                                .font(.title2)
-                        }
                         Text("Мои дела")
                             .font(.largeTitle)
                             .fontWeight(.bold)
@@ -45,6 +39,7 @@ struct TaskListView: View {
                     }
                     .padding(.top, 10)
                     .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
                     
                     List {
                         ForEach(viewModel.todoItems.filter { showCompleted || !$0.isReady }, id: \.id) { item in
@@ -78,8 +73,9 @@ struct TaskListView: View {
                         }
                         .background(Color.clear)
                     }
+                    .listStyle(PlainListStyle())
                     
-                    VStack {
+                    
                         Spacer()
                         Button(action: {
                             isShowingNewTask = true
@@ -93,7 +89,6 @@ struct TaskListView: View {
                                 .shadow(radius: 4)
                         }
                         .padding(.bottom, 16)
-                    }
                 }
             }
             .sheet(isPresented: $isShowingNewTask) {

@@ -63,6 +63,7 @@ class CalendarViewController: UIViewController {
         collectionView.delegate = self
         collectionView.backgroundColor = .bPrimary
         collectionView.showsHorizontalScrollIndicator = false
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         view.addSubview(collectionView)
         
         view.addSubview(separatorLine)
@@ -71,7 +72,7 @@ class CalendarViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .bPrimary
-        tableView.contentInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0) // Добавляем отступы сверху и снизу таблицы
+        tableView.contentInset = UIEdgeInsets(top: 2, left: 0, bottom: 2, right: 0)
         view.addSubview(tableView)
         view.addSubview(addButton)
     }
@@ -150,7 +151,7 @@ class CalendarViewController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
         
         let date = dates[indexPath.section]
         let items = groupedTodoItems[date] ?? []
