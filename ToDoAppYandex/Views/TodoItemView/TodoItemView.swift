@@ -30,6 +30,7 @@ struct TodoItemView: View {
             _isDeadlineOn = State(initialValue: item.deadline != nil)
             _deadline = State(initialValue: item.deadline ?? Date())
             _selectedCategory = State(initialValue: item.category)
+            _selectedColor = State(initialValue: Color(hex: item.color))
         }
     }
     
@@ -137,7 +138,9 @@ struct TodoItemView: View {
                                 isReady: editingItem?.isReady ?? false,
                                 createdAt: editingItem?.createdAt ?? Date(),
                                 updatedAt: Date(),
+                                color: selectedColor.hexString,
                                 category: selectedCategory
+                                
                             )
                             
                             if isNewTask {
