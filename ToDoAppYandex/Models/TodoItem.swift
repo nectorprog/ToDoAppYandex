@@ -8,7 +8,8 @@ struct TodoItem: Equatable, Identifiable{
     var isReady: Bool
     var createdAt: Date
     var updatedAt: Date?
-    var colorHex: String
+    var color: String
+    var category: TaskCategory
     
     init(
         id: String = UUID().uuidString,
@@ -18,7 +19,8 @@ struct TodoItem: Equatable, Identifiable{
         isReady: Bool = false,
         createdAt: Date = Date(),
         updatedAt: Date? = nil,
-        colorHex: String = "#FFFFFF"
+        color: String = "#000000",
+        category: TaskCategory = .other
     ) {
         self.id = id
         self.text = text
@@ -27,7 +29,8 @@ struct TodoItem: Equatable, Identifiable{
         self.isReady = isReady
         self.createdAt = createdAt
         self.updatedAt = updatedAt
-        self.colorHex = colorHex
+        self.color = color
+        self.category = category
     }
     
     var dict: [String: Any] {

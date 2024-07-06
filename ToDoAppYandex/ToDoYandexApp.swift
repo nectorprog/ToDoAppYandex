@@ -5,7 +5,7 @@ import SwiftData
 struct ToDoYandexApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TaskListView()
         }
     }
 }
