@@ -21,6 +21,7 @@ struct TodoItem: Equatable, Identifiable{
         updatedAt: Date? = nil,
         color: String = "#000000",
         category: TaskCategory = .other
+
     ) {
         self.id = id
         self.text = text

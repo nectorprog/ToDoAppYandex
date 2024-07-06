@@ -63,5 +63,3 @@ extension Color {
         return Color(hue: Double(h), saturation: Double(s), brightness: value, opacity: Double(a))
     }
 }
-
-
