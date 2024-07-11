@@ -1,5 +1,6 @@
 import UIKit
 import SwiftUI
+import CocoaLumberjackSwift
 
 class CalendarViewController: UIViewController {
     private let viewModel: TodoListViewModel
@@ -43,6 +44,7 @@ class CalendarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DDLogDebug("CalendarViewController loaded")
         setupViews()
         setupConstraints()
         loadData()

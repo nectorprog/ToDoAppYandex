@@ -1,7 +1,10 @@
 import Foundation
 import SwiftUI
+import CocoaLumberjackSwift
 
 class TodoListViewModel: ObservableObject {
+    private let logger = DDLog()
+    
     @Published var todoItems: [TodoItem] = [
 //        // Дела без дедлайна
 //        TodoItem(text: "Прочитать новую книгу", importance: .low, createdAt: Date().addingTimeInterval(-86400 * 5)),
@@ -41,15 +44,18 @@ class TodoListViewModel: ObservableObject {
     
     func addTodoItem(_ item: TodoItem) {
         todoItems.append(item)
+        DDLogInfo("Added new todo item: \(item.text)")
     }
     
     func updateTodoItem(_ item: TodoItem) {
         if let index = todoItems.firstIndex(where: { $0.id == item.id }) {
             todoItems[index] = item
+            DDLogInfo("Updated todo item: \(item.text)")
         }
     }
     
     func deleteTodoItem(_ item: TodoItem) {
         todoItems.removeAll { $0.id == item.id }
+        DDLogInfo("Deleted todo item: \(item.text)")
     }
 }

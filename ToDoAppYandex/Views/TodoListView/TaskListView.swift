@@ -1,4 +1,5 @@
 import SwiftUI
+import CocoaLumberjackSwift
 
 struct TaskListView: View {
     @StateObject private var viewModel = TodoListViewModel()
@@ -102,6 +103,9 @@ struct TaskListView: View {
                     editingItem = nil
                 }
             }
+        }
+        .onAppear {
+            DDLogInfo("Task list view appeared")
         }
     }
     

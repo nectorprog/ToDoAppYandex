@@ -1,4 +1,5 @@
 import SwiftUI
+import CocoaLumberjackSwift
 
 struct TodoItemView: View {
     @Binding var isPresented: Bool
@@ -156,6 +157,12 @@ struct TodoItemView: View {
                     .disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                 }
             }
+        }
+        .onAppear {
+            DDLogDebug("TodoItemView appeared for item: \(editingItem?.text ?? "New Item")")
+        }
+        .onDisappear {
+            DDLogDebug("TodoItemView disappeared for item: \(editingItem?.text ?? "New Item")")
         }
     }
 }
