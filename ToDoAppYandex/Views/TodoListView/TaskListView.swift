@@ -76,7 +76,6 @@ struct TaskListView: View {
                     }
                     .listStyle(PlainListStyle())
                     
-                    
                         Spacer()
                         Button(action: {
                             isShowingNewTask = true

@@ -20,13 +20,9 @@ struct CustomColorPicker: View {
             
             Slider(value: $brightness, in: 0...1)
                 .padding()
-                .onChange(of: brightness) { newValue in
+                .onChange(of: brightness) { oldValue, newValue in
                     selectedColor = selectedColor.adjustBrightness(to: newValue)
                 }
         }
     }
 }
-
-
-
-

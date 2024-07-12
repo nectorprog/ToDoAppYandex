@@ -26,6 +26,4 @@ class RoundedTableViewCell: UITableViewCell {
             textLabel!.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding.bottom)
         ])
     }
-    
-    
 }

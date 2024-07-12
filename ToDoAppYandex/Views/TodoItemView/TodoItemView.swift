@@ -166,4 +166,3 @@ struct TodoItemView: View {
         }
     }
 }
-
