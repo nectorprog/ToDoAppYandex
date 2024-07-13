@@ -22,7 +22,7 @@ extension Color {
             .sRGB,
             red: Double(r) / 255,
             green: Double(g) / 255,
-            blue:  Double(b) / 255,
+            blue: Double(b) / 255,
             opacity: Double(a) / 255
         )
     }
@@ -63,5 +63,3 @@ extension Color {
         return Color(hue: Double(h), saturation: Double(s), brightness: value, opacity: Double(a))
     }
 }
-
-

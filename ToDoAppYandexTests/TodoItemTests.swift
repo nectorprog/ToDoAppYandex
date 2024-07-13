@@ -66,7 +66,7 @@ final class ToDoItemTests: XCTestCase {
     func testTodoItemCreationWithExtremePastDates() {
         let pastDate = Date(timeIntervalSince1970: -1000000000)
 
-        let todoItem = TodoItem(text: "Past Task", importance: .low, deadline: pastDate, isReady: false, createdAt: pastDate)
+        let todoItem = TodoItem(text: "Past Task", importance: Importance.low, deadline: pastDate, isReady: false, createdAt: pastDate)
 
         XCTAssertEqual(todoItem.deadline, pastDate)
         XCTAssertEqual(todoItem.createdAt, pastDate)
@@ -76,7 +76,7 @@ final class ToDoItemTests: XCTestCase {
     func testTodoItemCreationWithExtremeFutureDates() {
         let futureDate = Date(timeIntervalSince1970: 32503680000)
 
-        let todoItem = TodoItem(text: "Future Task", importance: .high, deadline: futureDate, isReady: false, createdAt: futureDate)
+        let todoItem = TodoItem(text: "Future Task", importance: Importance.high, deadline: futureDate, isReady: false, createdAt: futureDate)
 
         XCTAssertEqual(todoItem.deadline, futureDate)
         XCTAssertEqual(todoItem.createdAt, futureDate)
@@ -84,43 +84,43 @@ final class ToDoItemTests: XCTestCase {
 
     // Тестирование всех значений Importance
     func testTodoItemWithLowImportance() {
-        let todoItem = TodoItem(text: "Low Importance Task", importance: .low, isReady: false, createdAt: fixedCreatedAt)
+        let todoItem = TodoItem(text: "Low Importance Task", importance: Importance.low, isReady: false, createdAt: fixedCreatedAt)
 
         XCTAssertEqual(todoItem.importance, Importance.low)
     }
     
     // Тестирование всех значений Importance
     func testTodoItemWithMediumImportance() {
-        let todoItem = TodoItem(text: "Medium Importance Task", importance: .medium, isReady: false, createdAt: fixedCreatedAt)
+        let todoItem = TodoItem(text: "Medium Importance Task", importance: Importance.medium, isReady: false, createdAt: fixedCreatedAt)
 
         XCTAssertEqual(todoItem.importance, Importance.medium)
     }
 
     // Тестирование всех значений Importance
     func testTodoItemWithHighImportance() {
-        let todoItem = TodoItem(text: "High Importance Task", importance: .high, isReady: false, createdAt: fixedCreatedAt)
+        let todoItem = TodoItem(text: "High Importance Task", importance: Importance.high, isReady: false, createdAt: fixedCreatedAt)
 
         XCTAssertEqual(todoItem.importance, Importance.high)
     }
 
     // Тестирование isReady
     func testTodoItemWithIsReadyTrue() {
-        let todoItem = TodoItem(text: "Completed Task", importance: .medium, isReady: true, createdAt: fixedCreatedAt)
+        let todoItem = TodoItem(text: "Completed Task", importance: Importance.medium, isReady: true, createdAt: fixedCreatedAt)
 
         XCTAssertTrue(todoItem.isReady)
     }
     
     // Тестирование isReady
     func testTodoItemWithIsReadyFalse() {
-        let todoItem = TodoItem(text: "Incomplete Task", importance: .medium, isReady: false, createdAt: fixedCreatedAt)
+        let todoItem = TodoItem(text: "Incomplete Task", importance: Importance.medium, isReady: false, createdAt: fixedCreatedAt)
 
         XCTAssertFalse(todoItem.isReady)
     }
     
     // Тестирование уникальности идентификаторов
     func testTodoItemUniqueID() {
-        let todoItem1 = TodoItem(text: "Task 1", importance: .medium, isReady: false, createdAt: fixedCreatedAt)
-        let todoItem2 = TodoItem(text: "Task 2", importance: .medium, isReady: false, createdAt: fixedCreatedAt)
+        let todoItem1 = TodoItem(text: "Task 1", importance: Importance.medium, isReady: false, createdAt: fixedCreatedAt)
+        let todoItem2 = TodoItem(text: "Task 2", importance: Importance.medium, isReady: false, createdAt: fixedCreatedAt)
 
         XCTAssertNotEqual(todoItem1.id, todoItem2.id)
     }
@@ -238,11 +238,9 @@ final class ToDoItemTests: XCTestCase {
         XCTAssertEqual(item?.deadline, fixedDeadline)
         XCTAssertEqual(item?.updatedAt, fixedUpdatedAt)
     }
-    
-    
     // Тестирование преобразования в JSON
     func testToJSON() {
-        let item = TodoItem(id: "123", text: "Test Task", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
+        let item = TodoItem(id: "123", text: "Test Task", importance: Importance.high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         let json = item.json as? String
         XCTAssertNotNil(json)
         
@@ -253,7 +251,7 @@ final class ToDoItemTests: XCTestCase {
     
     // Тестирование преобразования в CSV
     func testToCSV() {
-        let item = TodoItem(id: "123", text: "Test Task", importance: .high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
+        let item = TodoItem(id: "123", text: "Test Task", importance: Importance.high, deadline: fixedDeadline, isReady: true, createdAt: fixedCreatedAt, updatedAt: fixedUpdatedAt)
         let csv = item.csv
         
         let parsedItem = TodoItem.parse(csv: csv)
@@ -266,5 +264,3 @@ final class ToDoItemTests: XCTestCase {
     }
 
 }
-
-

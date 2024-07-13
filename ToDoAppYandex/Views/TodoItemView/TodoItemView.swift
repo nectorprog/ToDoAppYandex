@@ -1,4 +1,6 @@
 import SwiftUI
+import CocoaLumberjackSwift
+import ColorUtilities
 
 struct TodoItemView: View {
     @Binding var isPresented: Bool
@@ -157,6 +159,11 @@ struct TodoItemView: View {
                 }
             }
         }
+        .onAppear {
+            DDLogDebug("TodoItemView appeared for item: \(editingItem?.text ?? "New Item")")
+        }
+        .onDisappear {
+            DDLogDebug("TodoItemView disappeared for item: \(editingItem?.text ?? "New Item")")
+        }
     }
 }
-

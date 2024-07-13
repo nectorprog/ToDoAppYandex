@@ -18,7 +18,7 @@ struct DeadlinePicker: View {
                 Text("Сделать до")
                 Spacer()
                 Toggle("", isOn: $isOn)
-                    .onChange(of: isOn) { newValue in
+                    .onChange(of: isOn) { oldValue, newValue in
                         if newValue {
                             date = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
                             withAnimation(.easeInOut) {
@@ -30,6 +30,7 @@ struct DeadlinePicker: View {
                             }
                         }
                     }
+
             }
             
             if isOn {

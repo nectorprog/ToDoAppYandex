@@ -17,7 +17,7 @@ class FileCacheTests: XCTestCase {
     }
     
     func testAddItem() {
-        let item = TodoItem(text: "Test Task", importance: .medium, createdAt: Date())
+        let item = TodoItem(text: "Test Task", importance: Importance.medium, createdAt: Date())
         fileCache.add(item)
         
         XCTAssertEqual(fileCache.items.count, 1)
@@ -25,7 +25,7 @@ class FileCacheTests: XCTestCase {
     }
     
     func testRemoveItem() {
-        let item = TodoItem(text: "Test Task", importance: .medium, createdAt: Date())
+        let item = TodoItem(text: "Test Task", importance: Importance.medium, createdAt: Date())
         fileCache.add(item)
         let removedItem = fileCache.remove(id: item.id)
         
@@ -34,8 +34,8 @@ class FileCacheTests: XCTestCase {
     }
     
     func testSaveAndLoadJSON() {
-            let item1 = TodoItem(text: "Task 1", importance: .medium, createdAt: Date())
-            let item2 = TodoItem(text: "Task 2", importance: .high, createdAt: Date())
+            let item1 = TodoItem(text: "Task 1", importance: Importance.medium, createdAt: Date())
+            let item2 = TodoItem(text: "Task 2", importance: Importance.high, createdAt: Date())
             fileCache.add(item1)
             fileCache.add(item2)
             
@@ -50,8 +50,8 @@ class FileCacheTests: XCTestCase {
         }
         
         func testSaveAndLoadCSV() {
-            let item1 = TodoItem(text: "Task 1", importance: .medium, createdAt: Date())
-            let item2 = TodoItem(text: "Task 2", importance: .high, createdAt: Date())
+            let item1 = TodoItem(text: "Task 1", importance: Importance.medium, createdAt: Date())
+            let item2 = TodoItem(text: "Task 2", importance: Importance.high, createdAt: Date())
             fileCache.add(item1)
             fileCache.add(item2)
             

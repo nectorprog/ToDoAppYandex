@@ -4,7 +4,6 @@ struct RadioButtonStyle: View {
     var isReady: Bool
     var importance: Importance
 
-
     var body: some View {
             if isReady {
                 Circle()
@@ -21,7 +20,7 @@ struct RadioButtonStyle: View {
                             .stroke(Color.cRed, lineWidth: 1)
                             .background(Circle().fill(Color.cRed.opacity(0.1)))
                             .frame(width: 24, height: 24)
-                        Image(systemName:"exclamationmark.2")
+                        Image(systemName: "exclamationmark.2")
                             .foregroundColor(.cRed)
                             .font(.system(size: 16))
                     }
@@ -56,6 +55,3 @@ struct RadioButtonStyle: View {
     }
     
 }
-
-
-

@@ -27,7 +27,7 @@ extension TodoItem {
                 if let createdAtTimeInterval = jsonObject["createdAt"] as? TimeInterval {
                     createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
                 } else if let createdAtString = jsonObject["createdAt"] as? String, let createdAtTimeInterval = TimeInterval(createdAtString) {
-                                    createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
+                    createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
                 } else {
                     return nil
                 }
@@ -71,6 +71,7 @@ extension TodoItem {
            let jsonString = String(data: jsonData, encoding: .utf8) {
             return jsonString
         }
+
         return "{}"
     }
     
@@ -166,6 +167,5 @@ extension TodoItem {
         
         return "\(headerString)\n\(valueString)"
     }
-
+    
 }
-

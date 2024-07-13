@@ -44,7 +44,7 @@ class DateCollectionViewCell: UICollectionViewCell {
             
             dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
     
@@ -52,7 +52,6 @@ class DateCollectionViewCell: UICollectionViewCell {
         if let date = date {
             let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "ru_RU")
-            
             
             formatter.dateFormat = "d"
             dateLabel.text = formatter.string(from: date)

@@ -1,4 +1,5 @@
 import Foundation
+import CocoaLumberjackSwift
 
 class FileCache {
     private(set) var items: [TodoItem] = []
@@ -26,8 +27,10 @@ class FileCache {
         
         do {
             try data.write(to: url, options: [.atomic])
+            DDLogInfo("Successfully saved data to JSON file: \(filename)")
         } catch {
             print("Error saving to file: \(error)")
+            DDLogError("Error saving to JSON file: \(filename).")
         }
     }
     
@@ -36,7 +39,9 @@ class FileCache {
         do {
             let data = try Data(contentsOf: url)
             if let dictArray = try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
-                self.items = dictArray.compactMap{TodoItem.from(dict: $0)}
+                self.items = dictArray.compactMap { TodoItem.from(dict: $0) }
+                DDLogInfo("Successfully loaded data from JSON file: \(filename)")
+                DDLogError("Error loading from JSON file: \(filename).")
             }
         } catch {
             print("Error loading from file: \(error)")
@@ -78,7 +83,6 @@ class FileCache {
         }
     }
 
-    
     func serialize(items: [TodoItem]) -> Data? {
         let dictArray = items.map { $0.dict }
         return try? JSONSerialization.data(withJSONObject: dictArray, options: [])
@@ -90,5 +94,3 @@ class FileCache {
     }
 
 }
-
-
