@@ -3,13 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		B0C597A5927604C8D66A3C45 /* libPods-ToDoAppYandex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCCB5AB4F7C49E9EF2AE618E /* libPods-ToDoAppYandex.a */; };
 		CE0380FD2C2626120052E050 /* FileCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0380FC2C2626110052E050 /* FileCacheTests.swift */; };
 		CE0380FF2C2629430052E050 /* TodoItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0380FE2C2629430052E050 /* TodoItemTests.swift */; };
+		CE170A032C41A55D00DCDC6A /* ColorUtilities in Frameworks */ = {isa = PBXBuildFile; productRef = CE170A022C41A55D00DCDC6A /* ColorUtilities */; };
+		CE170A052C41F87400DCDC6A /* URLSession+DataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE170A042C41F87400DCDC6A /* URLSession+DataTask.swift */; };
+		CE170A0B2C4204D300DCDC6A /* TaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B9A2C38B6DD00D415C5 /* TaskCategory.swift */; };
+		CE170A0C2C4204D600DCDC6A /* LoggerSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE759E842C40777400DFD50B /* LoggerSetup.swift */; };
+		CE170A0D2C4204F500DCDC6A /* Pods-ToDoAppYandex.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5CD514B07BAFC9B30A42761D /* Pods-ToDoAppYandex.debug.xcconfig */; };
+		CE170A0E2C4204F900DCDC6A /* Pods-ToDoAppYandex.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0553D0BBD346F9EDA5982EEA /* Pods-ToDoAppYandex.release.xcconfig */; };
+		CE170A102C4205FF00DCDC6A /* URLSessionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE170A0F2C4205FF00DCDC6A /* URLSessionExtensionTests.swift */; };
 		CE23A4B32C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */; };
 		CE23A4B42C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */; };
 		CE759E7F2C40710500DFD50B /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = CE759E7E2C40710500DFD50B /* CocoaLumberjack */; };
@@ -25,8 +32,6 @@
 		CE962B572C35CF7000D415C5 /* ImportancePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B562C35CF7000D415C5 /* ImportancePicker.swift */; };
 		CE962B592C35D08E00D415C5 /* DeadlinePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B582C35D08E00D415C5 /* DeadlinePicker.swift */; };
 		CE962B5B2C36D5E700D415C5 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B5A2C36D5E700D415C5 /* View+Extensions.swift */; };
-		CE962B5E2C36E25700D415C5 /* CustomColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B5D2C36E25700D415C5 /* CustomColorPicker.swift */; };
-		CE962B602C36E2B100D415C5 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B5F2C36E2B100D415C5 /* ColorPalette.swift */; };
 		CE962B622C37F64200D415C5 /* RadioButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B612C37F64200D415C5 /* RadioButtonStyle.swift */; };
 		CE962B692C38170500D415C5 /* CalendarViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B682C38170400D415C5 /* CalendarViewControllerRepresentable.swift */; };
 		CE962B6C2C38177300D415C5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B6B2C38177300D415C5 /* CalendarViewController.swift */; };
@@ -65,6 +70,9 @@
 		5CD514B07BAFC9B30A42761D /* Pods-ToDoAppYandex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppYandex.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppYandex/Pods-ToDoAppYandex.debug.xcconfig"; sourceTree = "<group>"; };
 		CE0380FC2C2626110052E050 /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		CE0380FE2C2629430052E050 /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
+		CE170A002C41A3C100DCDC6A /* ColorUtilities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ColorUtilities; path = Packages/ColorUtilities; sourceTree = "<group>"; };
+		CE170A042C41F87400DCDC6A /* URLSession+DataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+DataTask.swift"; sourceTree = "<group>"; };
+		CE170A0F2C4205FF00DCDC6A /* URLSessionExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtensionTests.swift; sourceTree = "<group>"; };
 		CE23A4B22C2647D2003A48F1 /* TodoItem+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+Parsing.swift"; sourceTree = "<group>"; };
 		CE759E842C40777400DFD50B /* LoggerSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerSetup.swift; sourceTree = "<group>"; };
 		CE962B462C359A5400D415C5 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
@@ -76,8 +84,6 @@
 		CE962B562C35CF7000D415C5 /* ImportancePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportancePicker.swift; sourceTree = "<group>"; };
 		CE962B582C35D08E00D415C5 /* DeadlinePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinePicker.swift; sourceTree = "<group>"; };
 		CE962B5A2C36D5E700D415C5 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		CE962B5D2C36E25700D415C5 /* CustomColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorPicker.swift; sourceTree = "<group>"; };
-		CE962B5F2C36E2B100D415C5 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		CE962B612C37F64200D415C5 /* RadioButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonStyle.swift; sourceTree = "<group>"; };
 		CE962B682C38170400D415C5 /* CalendarViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewControllerRepresentable.swift; sourceTree = "<group>"; };
 		CE962B6B2C38177300D415C5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE170A032C41A55D00DCDC6A /* ColorUtilities in Frameworks */,
 				CE759E812C40710500DFD50B /* CocoaLumberjackSwift in Frameworks */,
 				CE759E832C40710500DFD50B /* CocoaLumberjackSwiftLogBackend in Frameworks */,
 				CE759E7F2C40710500DFD50B /* CocoaLumberjack in Frameworks */,
@@ -146,8 +153,6 @@
 				CE962B4D2C35AE2100D415C5 /* TodoItemTextView.swift */,
 				CE962B562C35CF7000D415C5 /* ImportancePicker.swift */,
 				CE962B582C35D08E00D415C5 /* DeadlinePicker.swift */,
-				CE962B5D2C36E25700D415C5 /* CustomColorPicker.swift */,
-				CE962B5F2C36E2B100D415C5 /* ColorPalette.swift */,
 			);
 			path = TodoItemView;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 		CEBED1D52C25B6B900EEE8D6 = {
 			isa = PBXGroup;
 			children = (
+				CE170A002C41A3C100DCDC6A /* ColorUtilities */,
 				CEBED1E02C25B6BA00EEE8D6 /* ToDoAppYandex */,
 				CEBED1F32C25B6BC00EEE8D6 /* ToDoAppYandexTests */,
 				CEBED1DF2C25B6B900EEE8D6 /* Products */,
@@ -246,6 +252,7 @@
 			children = (
 				CE0380FC2C2626110052E050 /* FileCacheTests.swift */,
 				CE0380FE2C2629430052E050 /* TodoItemTests.swift */,
+				CE170A0F2C4205FF00DCDC6A /* URLSessionExtensionTests.swift */,
 			);
 			path = ToDoAppYandexTests;
 			sourceTree = "<group>";
@@ -278,6 +285,7 @@
 				CE962B462C359A5400D415C5 /* Color+Extension.swift */,
 				CE962B5A2C36D5E700D415C5 /* View+Extensions.swift */,
 				CE962B942C384FC000D415C5 /* UIColor+Extension.swift */,
+				CE170A042C41F87400DCDC6A /* URLSession+DataTask.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -313,6 +321,7 @@
 				CE759E7E2C40710500DFD50B /* CocoaLumberjack */,
 				CE759E802C40710500DFD50B /* CocoaLumberjackSwift */,
 				CE759E822C40710500DFD50B /* CocoaLumberjackSwiftLogBackend */,
+				CE170A022C41A55D00DCDC6A /* ColorUtilities */,
 			);
 			productName = ToDoAppYandex;
 			productReference = CEBED1DE2C25B6B900EEE8D6 /* ToDoAppYandex.app */;
@@ -366,6 +375,7 @@
 			mainGroup = CEBED1D52C25B6B900EEE8D6;
 			packageReferences = (
 				CE759E7D2C40710500DFD50B /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				CE170A012C41A55D00DCDC6A /* XCLocalSwiftPackageReference "Packages/ColorUtilities" */,
 			);
 			productRefGroup = CEBED1DF2C25B6B900EEE8D6 /* Products */;
 			projectDirPath = "";
@@ -391,6 +401,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE170A0E2C4204F900DCDC6A /* Pods-ToDoAppYandex.release.xcconfig in Resources */,
+				CE170A0D2C4204F500DCDC6A /* Pods-ToDoAppYandex.debug.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,12 +472,11 @@
 				CED6AE402C2C094900AF1790 /* FieldOrder.swift in Sources */,
 				CED6AE462C2C60C500AF1790 /* Date+Equal.swift in Sources */,
 				CE962B5B2C36D5E700D415C5 /* View+Extensions.swift in Sources */,
-				CE962B5E2C36E25700D415C5 /* CustomColorPicker.swift in Sources */,
 				CE962B502C35BDDC00D415C5 /* TaskListView.swift in Sources */,
+				CE170A052C41F87400DCDC6A /* URLSession+DataTask.swift in Sources */,
 				CE962B6C2C38177300D415C5 /* CalendarViewController.swift in Sources */,
 				CEBED21C2C25BC1C00EEE8D6 /* Importance.swift in Sources */,
 				CE962B592C35D08E00D415C5 /* DeadlinePicker.swift in Sources */,
-				CE962B602C36E2B100D415C5 /* ColorPalette.swift in Sources */,
 				CE759E852C40777400DFD50B /* LoggerSetup.swift in Sources */,
 				CE23A4B32C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */,
 				CEBED1E62C25B6BA00EEE8D6 /* Item.swift in Sources */,
@@ -483,8 +494,11 @@
 				CE0380FD2C2626120052E050 /* FileCacheTests.swift in Sources */,
 				CED6AE472C2C60C500AF1790 /* Date+Equal.swift in Sources */,
 				CE23A4B42C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */,
+				CE170A0C2C4204D600DCDC6A /* LoggerSetup.swift in Sources */,
 				CEBED2232C25BCB100EEE8D6 /* FileCache.swift in Sources */,
+				CE170A0B2C4204D300DCDC6A /* TaskCategory.swift in Sources */,
 				CED6AE412C2C094900AF1790 /* FieldOrder.swift in Sources */,
+				CE170A102C4205FF00DCDC6A /* URLSessionExtensionTests.swift in Sources */,
 				CE0380FF2C2629430052E050 /* TodoItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -560,6 +574,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
 			};
 			name = Debug;
 		};
@@ -615,6 +630,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = complete;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -755,6 +771,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		CE170A012C41A55D00DCDC6A /* XCLocalSwiftPackageReference "Packages/ColorUtilities" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/ColorUtilities;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		CE759E7D2C40710500DFD50B /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -767,6 +790,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE170A022C41A55D00DCDC6A /* ColorUtilities */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ColorUtilities;
+		};
 		CE759E7E2C40710500DFD50B /* CocoaLumberjack */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE759E7D2C40710500DFD50B /* XCRemoteSwiftPackageReference "CocoaLumberjack" */;

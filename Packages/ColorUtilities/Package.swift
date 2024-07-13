@@ -7,7 +7,7 @@ let package = Package(
     products: [
         .library(
             name: "ColorUtilities",
-            targets: ["ColorUtilities"]),
+            targets: ["ColorUtilities"])
     ],
     dependencies: [],
     targets: [
@@ -16,6 +16,6 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "ColorUtilitiesTests",
-            dependencies: ["ColorUtilities"]),
+            dependencies: ["ColorUtilities"])
     ]
 )
