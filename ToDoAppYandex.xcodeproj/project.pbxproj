@@ -39,6 +39,8 @@
 		CE962B952C384FC000D415C5 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B942C384FC000D415C5 /* UIColor+Extension.swift */; };
 		CE962B992C38996900D415C5 /* RoundedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B982C38996900D415C5 /* RoundedTableViewCell.swift */; };
 		CE962B9B2C38B6DD00D415C5 /* TaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B9A2C38B6DD00D415C5 /* TaskCategory.swift */; };
+		CEABDD822C4B28F200CD98E9 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */; };
+		CEABDD832C4B28F200CD98E9 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */; };
 		CEBED1E22C25B6BA00EEE8D6 /* ToDoYandexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */; };
 		CEBED1E62C25B6BA00EEE8D6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E52C25B6BA00EEE8D6 /* Item.swift */; };
 		CEBED1E82C25B6BB00EEE8D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBED1E72C25B6BB00EEE8D6 /* Assets.xcassets */; };
@@ -91,6 +93,7 @@
 		CE962B942C384FC000D415C5 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CE962B982C38996900D415C5 /* RoundedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTableViewCell.swift; sourceTree = "<group>"; };
 		CE962B9A2C38B6DD00D415C5 /* TaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCategory.swift; sourceTree = "<group>"; };
+		CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkingService.swift; sourceTree = "<group>"; };
 		CEBED1DE2C25B6B900EEE8D6 /* ToDoAppYandex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoAppYandex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoYandexApp.swift; sourceTree = "<group>"; };
 		CEBED1E52C25B6BA00EEE8D6 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -200,6 +203,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		CEABDD802C4B28BF00CD98E9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		CEBED1D52C25B6B900EEE8D6 = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +235,7 @@
 		CEBED1E02C25B6BA00EEE8D6 /* ToDoAppYandex */ = {
 			isa = PBXGroup;
 			children = (
+				CEABDD802C4B28BF00CD98E9 /* Networking */,
 				CE962B6D2C38370600D415C5 /* ViewControllers */,
 				CE962B672C3816DA00D415C5 /* Helpers */,
 				CE962B512C35CCFC00D415C5 /* ViewModels */,
@@ -470,6 +482,7 @@
 				CE962B472C359A5400D415C5 /* Color+Extension.swift in Sources */,
 				CEBED2222C25BCB100EEE8D6 /* FileCache.swift in Sources */,
 				CED6AE402C2C094900AF1790 /* FieldOrder.swift in Sources */,
+				CEABDD822C4B28F200CD98E9 /* DefaultNetworkingService.swift in Sources */,
 				CED6AE462C2C60C500AF1790 /* Date+Equal.swift in Sources */,
 				CE962B5B2C36D5E700D415C5 /* View+Extensions.swift in Sources */,
 				CE962B502C35BDDC00D415C5 /* TaskListView.swift in Sources */,
@@ -500,6 +513,7 @@
 				CED6AE412C2C094900AF1790 /* FieldOrder.swift in Sources */,
 				CE170A102C4205FF00DCDC6A /* URLSessionExtensionTests.swift in Sources */,
 				CE0380FF2C2629430052E050 /* TodoItemTests.swift in Sources */,
+				CEABDD832C4B28F200CD98E9 /* DefaultNetworkingService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
