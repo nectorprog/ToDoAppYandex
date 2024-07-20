@@ -4,58 +4,137 @@ import CocoaLumberjackSwift
 
 class TodoListViewModel: ObservableObject {
     private let logger = DDLog()
+    private let networkingService: NetworkingService
     
-    @Published var todoItems: [TodoItem] = [
-//        // Дела без дедлайна
-//        TodoItem(text: "Прочитать новую книгу", importance: .low, createdAt: Date().addingTimeInterval(-86400 * 5)),
-//        TodoItem(text: "Обновить резюме", importance: .medium, createdAt: Date().addingTimeInterval(-86400 * 3)),
-//        TodoItem(text: "Записаться к стоматологу", importance: .high, createdAt: Date().addingTimeInterval(-86400)),
-//
-//        // Группа 1 - дедлайн через 2 дня
-//        TodoItem(text: "Купить продукты", importance: .medium, deadline: Date().addingTimeInterval(86400 * 2), createdAt: Date()),
-//        TodoItem(text: "Приготовить ужин для друзей", importance: .high, deadline: Date().addingTimeInterval(86400 * 2), createdAt: Date().addingTimeInterval(-86400)),
-//        TodoItem(text: "Подготовить презентацию", importance: .high, deadline: Date().addingTimeInterval(86400 * 2), createdAt: Date().addingTimeInterval(-86400 * 2)),
-//
-//        // Группа 2 - дедлайн через 5 дней
-//        TodoItem(text: "Забрать заказ из магазина", importance: .low, deadline: Date().addingTimeInterval(86400 * 5), createdAt: Date()),
-//        TodoItem(text: "Оплатить счета", importance: .high, deadline: Date().addingTimeInterval(86400 * 5), createdAt: Date().addingTimeInterval(-86400)),
-//        TodoItem(text: "Подготовиться к экзамену", importance: .high, deadline: Date().addingTimeInterval(86400 * 5), createdAt: Date().addingTimeInterval(-86400 * 3)),
-//
-//        // Группа 3 - дедлайн через неделю
-//        TodoItem(text: "Закончить проект", importance: .high, deadline: Date().addingTimeInterval(86400 * 7), createdAt: Date()),
-//        TodoItem(text: "Заказать билеты в отпуск", importance: .medium, deadline: Date().addingTimeInterval(86400 * 7), createdAt: Date().addingTimeInterval(-86400 * 2)),
-//        TodoItem(text: "Обновить гардероб", importance: .low, deadline: Date().addingTimeInterval(86400 * 7), createdAt: Date().addingTimeInterval(-86400 * 4)),
-//
-//        // Группа 4 - дедлайн через 10 дней
-//        TodoItem(text: "Организовать вечеринку", importance: .medium, deadline: Date().addingTimeInterval(86400 * 10), createdAt: Date()),
-//        TodoItem(text: "Пройти медосмотр", importance: .high, deadline: Date().addingTimeInterval(86400 * 10), createdAt: Date().addingTimeInterval(-86400 * 2)),
-//        TodoItem(text: "Сделать уборку в гараже", importance: .low, deadline: Date().addingTimeInterval(86400 * 10), createdAt: Date().addingTimeInterval(-86400 * 5)),
-//
-//        // Группа 5 - дедлайн через 14 дней
-//        TodoItem(text: "Подготовить отчет за квартал", importance: .high, deadline: Date().addingTimeInterval(86400 * 14), createdAt: Date()),
-//        TodoItem(text: "Обновить программное обеспечение", importance: .medium, deadline: Date().addingTimeInterval(86400 * 14), createdAt: Date().addingTimeInterval(-86400 * 3)),
-//        TodoItem(text: "Записаться на курсы повышения квалификации", importance: .medium, deadline: Date().addingTimeInterval(86400 * 14), createdAt: Date().addingTimeInterval(-86400 * 6)),
-//
-//        // Группа 6 - дедлайн через 20 дней
-//        TodoItem(text: "Спланировать отпуск", importance: .medium, deadline: Date().addingTimeInterval(86400 * 20), createdAt: Date()),
-//        TodoItem(text: "Подготовить презентацию для конференции", importance: .high, deadline: Date().addingTimeInterval(86400 * 20), createdAt: Date().addingTimeInterval(-86400 * 4)),
-//        TodoItem(text: "Обновить портфолио", importance: .low, deadline: Date().addingTimeInterval(86400 * 20), createdAt: Date().addingTimeInterval(-86400 * 7))
-    ]
+    @Published var todoItems: [TodoItem] = []
+    @Published var isDirty: Bool = false
+    @Published var isLoading: Bool = false
+    @Published var error: String?
+    
+    init(networkingService: NetworkingService = DefaultNetworkingService()) {
+        self.networkingService = networkingService
+        loadItems()
+    }
+    
+    func loadItems() {
+        isLoading = true
+        error = nil
+        networkingService.getItems { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success(let items):
+                    self?.todoItems = items
+                    self?.isDirty = false
+                    DDLogInfo("Successfully loaded \(items.count) items")
+                case .failure(let error):
+                    DDLogError("Failed to load items: \(error)")
+                    self?.isDirty = true
+                    self?.error = "Не удалось загрузить задачи: \(error.localizedDescription)"
+                }
+            }
+        }
+    }
     
     func addTodoItem(_ item: TodoItem) {
-        todoItems.append(item)
-        DDLogInfo("Added new todo item: \(item.text)")
+        isLoading = true
+        error = nil
+        networkingService.addItem(item) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success(let newItem):
+                    self?.todoItems.append(newItem)
+                    self?.isDirty = false
+                    DDLogInfo("Added new todo item: \(newItem.text)")
+                case .failure(let error):
+                    DDLogError("Failed to add item: \(error)")
+                    self?.todoItems.append(item)
+                    self?.isDirty = true
+                    self?.error = "Не удалось добавить задачу: \(error.localizedDescription)"
+                }
+            }
+        }
     }
     
     func updateTodoItem(_ item: TodoItem) {
-        if let index = todoItems.firstIndex(where: { $0.id == item.id }) {
-            todoItems[index] = item
-            DDLogInfo("Updated todo item: \(item.text)")
+        guard let index = todoItems.firstIndex(where: { $0.id == item.id }) else {
+            DDLogError("Failed to find index for item with id: \(item.id)")
+            return
+        }
+        
+        isLoading = true
+        error = nil
+        networkingService.updateItem(item) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success(let updatedItem):
+                    if let index = self?.todoItems.firstIndex(where: { $0.id == updatedItem.id }) {
+                        self?.todoItems[index] = updatedItem
+                    }
+                    self?.isDirty = false
+                    DDLogInfo("Updated todo item: \(updatedItem.text)")
+                case .failure(let error):
+                    DDLogError("Failed to update item: \(error)")
+                    if let index = self?.todoItems.firstIndex(where: { $0.id == item.id }) {
+                        self?.todoItems[index] = item
+                    }
+                    self?.isDirty = true
+                    if case let .httpError(statusCode) = error {
+                        self?.error = "Ошибка сервера при обновлении: \(statusCode)"
+                    } else {
+                        self?.error = "Не удалось обновить задачу: \(error.localizedDescription)"
+                    }
+                }
+            }
         }
     }
     
     func deleteTodoItem(_ item: TodoItem) {
-        todoItems.removeAll { $0.id == item.id }
-        DDLogInfo("Deleted todo item: \(item.text)")
+        isLoading = true
+        error = nil
+        networkingService.deleteItem(item.id) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success:
+                    self?.todoItems.removeAll { $0.id == item.id }
+                    self?.isDirty = false
+                    DDLogInfo("Deleted todo item: \(item.text)")
+                case .failure(let error):
+                    DDLogError("Failed to delete item: \(error)")
+                    self?.isDirty = true
+                    self?.error = "Не удалось удалить задачу: \(error.localizedDescription)"
+                }
+            }
+        }
+    }
+    
+    func synchronize() {
+        guard isDirty else { return }
+        
+        isLoading = true
+        error = nil
+        networkingService.patchList(todoItems) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                switch result {
+                case .success(let updatedItems):
+                    self?.todoItems = updatedItems
+                    self?.isDirty = false
+                    DDLogInfo("Successfully synchronized \(updatedItems.count) items")
+                case .failure(let error):
+                    DDLogError("Failed to synchronize items: \(error)")
+                    self?.isDirty = true
+                    if case let .httpError(statusCode) = error {
+                        self?.error = "Ошибка сервера при синхронизации: \(statusCode)"
+                    } else {
+                        self?.error = "Не удалось синхронизировать задачи: \(error.localizedDescription)"
+                    }
+                }
+            }
+        }
     }
 }
+
