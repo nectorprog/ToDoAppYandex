@@ -1,51 +1,50 @@
 import Foundation
 
 extension TodoItem {
-    static func parse(json: Any) -> TodoItem? {
-        guard let jsonData = (json as? String)?.data(using: .utf8) else {
+    static func parse(json: [String: Any]) -> TodoItem? {
+        guard let id = json["id"] as? String,
+              let text = json["text"] as? String,
+              let createdAt = json["created_at"] as? TimeInterval,
+              let changedAt = json["changed_at"] as? TimeInterval,
+              let done = json["done"] as? Bool,
+              let lastUpdatedBy = json["last_updated_by"] as? String else {
+            print("Failed to parse required fields")
             return nil
         }
         
-        do {
-            if let jsonObject = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
-                let id = jsonObject["id"] as? String ?? UUID().uuidString
-                guard let text = jsonObject["text"] as? String else { return nil }
-                
-                let importanceString = jsonObject["importance"] as? String ?? Importance.medium.rawValue
-                let importance = Importance(rawValue: importanceString) ?? .medium
-                
-                let deadline: Date?
-                if let deadlineTimeInterval = jsonObject["deadline"] as? TimeInterval {
-                    deadline = Date(timeIntervalSince1970: deadlineTimeInterval)
-                } else {
-                    deadline = nil
-                }
-                
-                let isReady = jsonObject["isReady"] as? Bool ?? false
-                
-                let createdAt: Date
-                if let createdAtTimeInterval = jsonObject["createdAt"] as? TimeInterval {
-                    createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
-                } else if let createdAtString = jsonObject["createdAt"] as? String, let createdAtTimeInterval = TimeInterval(createdAtString) {
-                    createdAt = Date(timeIntervalSince1970: createdAtTimeInterval)
-                } else {
-                    return nil
-                }
-                
-                let updatedAt: Date?
-                if let updatedAtTimeInteval = jsonObject["updatedAt"] as? TimeInterval {
-                    updatedAt = Date(timeIntervalSince1970: updatedAtTimeInteval)
-                } else {
-                    updatedAt = nil
-                }
-                
-                return TodoItem(id: id, text: text, importance: importance, deadline: deadline, isReady: isReady, createdAt: createdAt, updatedAt: updatedAt)
-            }
-        } catch {
-            print("Error parsing JSON: \(error)")
+        let importanceString = json["importance"] as? String ?? "basic"
+        let importance: Importance
+        switch importanceString {
+        case "low":
+            importance = .low
+        case "basic":
+            importance = .medium
+        case "important":
+            importance = .high
+        default:
+            importance = .medium
         }
         
-        return nil
+        let deadline: Date?
+        if let deadlineTimeInterval = json["deadline"] as? TimeInterval {
+            deadline = Date(timeIntervalSince1970: deadlineTimeInterval)
+        } else {
+            deadline = nil
+        }
+        
+        let color = json["color"] as? String
+        
+        return TodoItem(
+            id: id,
+            text: text,
+            importance: importance,
+            deadline: deadline,
+            isReady: done,
+            createdAt: Date(timeIntervalSince1970: createdAt),
+            updatedAt: Date(timeIntervalSince1970: changedAt),
+            color: color ?? "#FFFFFF",
+            lastUpdatedBy: lastUpdatedBy
+        )
     }
     
     var json: Any {

@@ -10,7 +10,8 @@ struct TodoItem: Equatable, Identifiable {
     var updatedAt: Date?
     var color: String
     var category: TaskCategory
-    
+    var lastUpdatedBy: String
+
     init(
         id: String = UUID().uuidString,
         text: String,
@@ -20,7 +21,8 @@ struct TodoItem: Equatable, Identifiable {
         createdAt: Date = Date(),
         updatedAt: Date? = nil,
         color: String = "#000000",
-        category: TaskCategory = .other
+        category: TaskCategory = .other,
+        lastUpdatedBy: String = "device_id"
     ) {
         self.id = id
         self.text = text
@@ -31,6 +33,7 @@ struct TodoItem: Equatable, Identifiable {
         self.updatedAt = updatedAt
         self.color = color
         self.category = category
+        self.lastUpdatedBy = lastUpdatedBy
     }
     
     var dict: [String: Any] {

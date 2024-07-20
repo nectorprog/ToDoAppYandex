@@ -141,8 +141,8 @@ struct TodoItemView: View {
                                 createdAt: editingItem?.createdAt ?? Date(),
                                 updatedAt: Date(),
                                 color: selectedColor.hexString,
-                                category: selectedCategory
-                                
+                                category: selectedCategory,
+                                lastUpdatedBy: "device_id"
                             )
                             
                             if isNewTask {
