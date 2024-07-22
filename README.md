@@ -17,7 +17,6 @@ ToDoApp - это мощное и интуитивно понятное iOS пр�
 - 🛠 **Swift 5**
 - 🖼 **SwiftUI**
 - 📱 **UIKit**
-- 🔗 **Combine**
 - 📝 **CocoaLumberjack** (для логирования)
 - 📦 **CocoaPods** (менеджер зависимостей)
 
