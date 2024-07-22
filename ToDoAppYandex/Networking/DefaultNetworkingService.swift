@@ -17,7 +17,7 @@ protocol NetworkingService {
 }
 
 class DefaultNetworkingService: NetworkingService {
-    private let baseURL = "https://beta.mrdekk.ru/todo"
+    private let baseURL = "https://hive.mrdekk.ru/todo"
     private let token = "Adaneth"
     private var lastKnownRevision: Int = 0
     private let session: URLSession
@@ -113,56 +113,111 @@ class DefaultNetworkingService: NetworkingService {
         }.resume()
     }
     
+    
     func addItem(_ item: TodoItem, completion: @escaping (Result<TodoItem, NetworkError>) -> Void) {
         let path = "/list"
-        let element = [
+        var element: [String: Any] = [
             "id": item.id,
             "text": item.text,
-            "importance": item.importance.rawValue,
-            "deadline": item.deadline?.timeIntervalSince1970 ?? 0,
+            "importance": convertImportance(item.importance),
             "done": item.isReady,
-            "color": item.color,
-            "created_at": item.createdAt.timeIntervalSince1970,
-            "changed_at": item.updatedAt?.timeIntervalSince1970 ?? item.createdAt.timeIntervalSince1970,
-            "last_updated_by": "device_id"
-        ] as [String : Any]
-        let body = try? JSONSerialization.data(withJSONObject: ["element": element])
-        let request = makeRequest(path: path, method: "POST", body: body)
+            "created_at": Int(item.createdAt.timeIntervalSince1970),
+            "changed_at": Int(Date().timeIntervalSince1970),
+            "last_updated_by": item.lastUpdatedBy
+        ]
         
-        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+        // Добавляем deadline только если он есть
+        if let deadline = item.deadline {
+            element["deadline"] = Int(deadline.timeIntervalSince1970)
+        }
+        
+        // Добавляем color только если он не пустой
+        if !item.color.isEmpty {
+            element["color"] = item.color
+        }
+        
+        let body: Data
+        do {
+            body = try JSONSerialization.data(withJSONObject: ["element": element])
+        } catch {
+            print("Error serializing item: \(error)")
+            DispatchQueue.main.async {
+                completion(.failure(.unknown))
+            }
+            return
+        }
+        
+        var request = makeRequest(path: path, method: "POST", body: body)
+        
+        // Добавляем логирование для отладки
+        print("Adding item. Request URL: \(request.url?.absoluteString ?? "")")
+        print("Request headers: \(request.allHTTPHeaderFields ?? [:])")
+        print("Request body: \(String(data: body, encoding: .utf8) ?? "")")
+        
+        session.dataTask(with: request) { [weak self] data, response, error in
             DispatchQueue.global().async {
                 if let error = error {
-                    completion(.failure(.unknown))
+                    print("Network error: \(error)")
+                    DispatchQueue.main.async {
+                        completion(.failure(.unknown))
+                    }
                     return
                 }
                 
                 guard let httpResponse = response as? HTTPURLResponse else {
-                    completion(.failure(.unknown))
+                    print("Invalid response type")
+                    DispatchQueue.main.async {
+                        completion(.failure(.unknown))
+                    }
                     return
                 }
                 
+                print("Response status code: \(httpResponse.statusCode)")
+                
                 guard (200...299).contains(httpResponse.statusCode) else {
-                    completion(.failure(.httpError(httpResponse.statusCode)))
+                    print("HTTP error: \(httpResponse.statusCode)")
+                    if let data = data, let responseString = String(data: data, encoding: .utf8) {
+                        print("Response body: \(responseString)")
+                    }
+                    DispatchQueue.main.async {
+                        completion(.failure(.httpError(httpResponse.statusCode)))
+                    }
                     return
                 }
                 
                 guard let data = data else {
-                    completion(.failure(.noData))
+                    print("No data received")
+                    DispatchQueue.main.async {
+                        completion(.failure(.noData))
+                    }
                     return
                 }
                 
                 do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                       let revision = json["revision"] as? Int,
-                       let element = json["element"] as? [String: Any],
-                       let newItem = TodoItem.parse(json: element) {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response data: \(responseString)")
+                    }
+                    
+                    let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                    if let revision = json?["revision"] as? Int {
                         self?.lastKnownRevision = revision
-                        completion(.success(newItem))
+                    }
+                    if let element = json?["element"] as? [String: Any],
+                       let newItem = TodoItem.parse(json: element) {
+                        DispatchQueue.main.async {
+                            completion(.success(newItem))
+                        }
                     } else {
-                        completion(.failure(.decodingError))
+                        print("Invalid JSON structure")
+                        DispatchQueue.main.async {
+                            completion(.failure(.decodingError))
+                        }
                     }
                 } catch {
-                    completion(.failure(.decodingError))
+                    print("JSON parsing error: \(error.localizedDescription)")
+                    DispatchQueue.main.async {
+                        completion(.failure(.decodingError))
+                    }
                 }
             }
         }.resume()
