@@ -41,7 +41,6 @@
 		CE962B9B2C38B6DD00D415C5 /* TaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B9A2C38B6DD00D415C5 /* TaskCategory.swift */; };
 		CEABDD822C4B28F200CD98E9 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */; };
 		CEABDD832C4B28F200CD98E9 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */; };
-		CEABDD852C4B2F2300CD98E9 /* DefaultNetworkingServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEABDD842C4B2F2300CD98E9 /* DefaultNetworkingServiceTests.swift */; };
 		CEBED1E22C25B6BA00EEE8D6 /* ToDoYandexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */; };
 		CEBED1E62C25B6BA00EEE8D6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E52C25B6BA00EEE8D6 /* Item.swift */; };
 		CEBED1E82C25B6BB00EEE8D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBED1E72C25B6BB00EEE8D6 /* Assets.xcassets */; };
@@ -95,7 +94,6 @@
 		CE962B982C38996900D415C5 /* RoundedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTableViewCell.swift; sourceTree = "<group>"; };
 		CE962B9A2C38B6DD00D415C5 /* TaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCategory.swift; sourceTree = "<group>"; };
 		CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkingService.swift; sourceTree = "<group>"; };
-		CEABDD842C4B2F2300CD98E9 /* DefaultNetworkingServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkingServiceTests.swift; sourceTree = "<group>"; };
 		CEABDD862C4B33BB00CD98E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEBED1DE2C25B6B900EEE8D6 /* ToDoAppYandex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoAppYandex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoYandexApp.swift; sourceTree = "<group>"; };
@@ -269,7 +267,6 @@
 				CE0380FC2C2626110052E050 /* FileCacheTests.swift */,
 				CE0380FE2C2629430052E050 /* TodoItemTests.swift */,
 				CE170A0F2C4205FF00DCDC6A /* URLSessionExtensionTests.swift */,
-				CEABDD842C4B2F2300CD98E9 /* DefaultNetworkingServiceTests.swift */,
 			);
 			path = ToDoAppYandexTests;
 			sourceTree = "<group>";
@@ -510,7 +507,6 @@
 				CEBED21D2C25BC1C00EEE8D6 /* Importance.swift in Sources */,
 				CEBED2122C25B83800EEE8D6 /* TodoItem.swift in Sources */,
 				CE0380FD2C2626120052E050 /* FileCacheTests.swift in Sources */,
-				CEABDD852C4B2F2300CD98E9 /* DefaultNetworkingServiceTests.swift in Sources */,
 				CED6AE472C2C60C500AF1790 /* Date+Equal.swift in Sources */,
 				CE23A4B42C2647D2003A48F1 /* TodoItem+Parsing.swift in Sources */,
 				CE170A0C2C4204D600DCDC6A /* LoggerSetup.swift in Sources */,

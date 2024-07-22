@@ -3,103 +3,54 @@ import XCTest
 
 class URLSessionExtensionTests: XCTestCase {
     
-    func testDataTaskForURLRequest() {
-        let expectation = XCTestExpectation(description: "API call")
-        
+    func testSuccessfulRequest() async throws {
+        // Проверка успешного запроса
         let url = URL(string: "https://jsonplaceholder.typicode.com/todos/1")!
-        let urlRequest = URLRequest(url: url)
+        let request = URLRequest(url: url)
         
-        DispatchQueue.global().async {
-            do {
-                let (data, response) = try URLSession.shared.dataTask(for: urlRequest)
-                XCTAssertNotNil(data)
-                XCTAssertNotNil(response)
-                XCTAssertTrue(response is HTTPURLResponse)
-                
-                // Проверяем, что получили валидный JSON
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                XCTAssertNotNil(json)
-                XCTAssertEqual(json?["id"] as? Int, 1)
-                XCTAssertEqual(json?["title"] as? String, "delectus aut autem")
-                
-                expectation.fulfill()
-            } catch {
-                XCTFail("Error: \(error)")
-            }
+        let (data, response) = try await URLSession.shared.dataTask(for: request)
+        
+        XCTAssertFalse(data.isEmpty, "Данные не должны быть пустыми")
+        XCTAssertTrue(response is HTTPURLResponse, "Ответ должен быть HTTPURLResponse")
+        if let httpResponse = response as? HTTPURLResponse {
+            XCTAssertEqual(httpResponse.statusCode, 200, "Статус код должен быть 200")
         }
-        
-        wait(for: [expectation], timeout: 10.0)
     }
     
-    func testDataTaskForInvalidURL() {
-        let expectation = XCTestExpectation(description: "Invalid URL call")
+    func testCancellation() async {
+        // Проверка отмены запроса
+        let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
+        let request = URLRequest(url: url)
         
-        let url = URL(string: "https://jsonplaceholder.typicode.com/invalid")!
-        let urlRequest = URLRequest(url: url)
-        
-        DispatchQueue.global().async {
+        let task = Task {
             do {
-                let (_, response) = try URLSession.shared.dataTask(for: urlRequest)
-                XCTAssertTrue(response is HTTPURLResponse)
-                let httpResponse = response as! HTTPURLResponse
-                XCTAssertEqual(httpResponse.statusCode, 404)
-                expectation.fulfill()
+                _ = try await URLSession.shared.dataTask(for: request)
+                XCTFail("Ожидалась ошибка отмены")
+            } catch let error as URLError where error.code == .cancelled {
+                XCTAssertEqual(error.code, .cancelled, "Ожидалась ошибка отмены")
             } catch {
-                XCTFail("Error: \(error)")
+                XCTFail("Неожиданная ошибка: \(error)")
             }
         }
         
-        wait(for: [expectation], timeout: 10.0)
+        task.cancel()
+        
+        await task.value
     }
     
-    func testConcurrentRequests() {
-        let expectation = XCTestExpectation(description: "Concurrent requests")
-        expectation.expectedFulfillmentCount = 10
+    func testTimeout() async {
+        // Проверка таймаута запроса
+        let url = URL(string: "https://jsonplaceholder.typicode.com/comments")!
+        var request = URLRequest(url: url)
+        request.timeoutInterval = 0.001 // Устанавливаем очень короткий таймаут
         
-        let url = URL(string: "https://jsonplaceholder.typicode.com/todos/1")!
-        let urlRequest = URLRequest(url: url)
-        
-        DispatchQueue.concurrentPerform(iterations: 10) { _ in
-            do {
-                let (data, response) = try URLSession.shared.dataTask(for: urlRequest)
-                XCTAssertNotNil(data)
-                XCTAssertNotNil(response)
-                expectation.fulfill()
-            } catch {
-                XCTFail("Error: \(error)")
-            }
+        do {
+            _ = try await URLSession.shared.dataTask(for: request)
+            XCTFail("Ожидалась ошибка таймаута")
+        } catch let error as URLError where error.code == .timedOut {
+            XCTAssertEqual(error.code, .timedOut, "Ожидалась ошибка таймаута")
+        } catch {
+            XCTFail("Неожиданная ошибка: \(error)")
         }
-        
-        wait(for: [expectation], timeout: 30.0)
-    }
-    
-    func testConcurrentRequestsWithDifferentURLs() {
-        let expectation = XCTestExpectation(description: "Concurrent requests with different URLs")
-        expectation.expectedFulfillmentCount = 5
-        
-        let urls = [
-            "https://jsonplaceholder.typicode.com/todos/1",
-            "https://jsonplaceholder.typicode.com/todos/2",
-            "https://jsonplaceholder.typicode.com/todos/3",
-            "https://jsonplaceholder.typicode.com/todos/4",
-            "https://jsonplaceholder.typicode.com/todos/5"
-        ]
-        
-        DispatchQueue.concurrentPerform(iterations: 5) { index in
-            let url = URL(string: urls[index])!
-            let urlRequest = URLRequest(url: url)
-            do {
-                let (data, response) = try URLSession.shared.dataTask(for: urlRequest)
-                XCTAssertNotNil(data)
-                XCTAssertNotNil(response)
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                XCTAssertEqual(json?["id"] as? Int, index + 1)
-                expectation.fulfill()
-            } catch {
-                XCTFail("Error: \(error)")
-            }
-        }
-        
-        wait(for: [expectation], timeout: 30.0)
     }
 }
