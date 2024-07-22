@@ -1,0 +1,5 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "d36d0f6c019f3a796a8149f747d38a6a"
+build_time: [1720804624, 844551000]
+inputs:
+  "/Users/nector/SwiftProjects/ToDoAppYandex/Sources/ColorUtilities/ColorUtilities.swift": [1720804517, 979915497]

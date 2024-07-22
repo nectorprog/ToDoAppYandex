@@ -1,0 +1,350 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesPackageTests.xctest/Contents/MacOS/ColorUtilitiesPackageTests",
+      "packagePath" : "/Users/nector/SwiftProjects/ToDoAppYandex",
+      "productName" : "ColorUtilitiesPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.ColorUtilities-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/sources",
+      "importPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/Sources/ColorUtilities/ColorUtilities.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "ColorUtilities",
+      "moduleOutputPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.swiftmodule",
+      "objects" : [
+        "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/ColorUtilities.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/ColorUtilities-Swift.h",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-diagnostic-style=llvm",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "todoappyandex"
+      ],
+      "outputFileMapPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/ColorUtilities.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/nector/SwiftProjects/ToDoAppYandex/Sources/ColorUtilities/ColorUtilities.swift"
+      ],
+      "tempsPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build",
+      "wholeModuleOptimization" : false
+    },
+    "C.ColorUtilitiesTests-debug.module" : {
+      "executable" : "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "fileList" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build/sources",
+      "importPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/Tests/ColorUtilitiesTests/ColorUtilitiesTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.swiftmodule"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build/sources"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "ColorUtilitiesTests",
+      "moduleOutputPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.swiftmodule",
+      "objects" : [
+        "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build/ColorUtilitiesTests.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx10.13",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-parse-as-library",
+        "-sdk",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-g",
+        "-diagnostic-style=llvm",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "todoappyandex"
+      ],
+      "outputFileMapPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build/ColorUtilitiesTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/nector/SwiftProjects/ToDoAppYandex/Tests/ColorUtilitiesTests/ColorUtilitiesTests.swift"
+      ],
+      "tempsPath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "ColorUtilities" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "ColorUtilities",
+      "-package-name",
+      "todoappyandex",
+      "-incremental",
+      "-c",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/Sources/ColorUtilities/ColorUtilities.swift",
+      "-I",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-swift-version",
+      "5",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-emit-objc-header",
+      "-emit-objc-header-path",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/ColorUtilities-Swift.h",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-diagnostic-style=llvm",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "todoappyandex",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ],
+    "ColorUtilitiesTests" : [
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc",
+      "-module-name",
+      "ColorUtilitiesTests",
+      "-package-name",
+      "todoappyandex",
+      "-incremental",
+      "-c",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/Tests/ColorUtilitiesTests/ColorUtilitiesTests.swift",
+      "-I",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug",
+      "-target",
+      "arm64-apple-macosx10.13",
+      "-swift-version",
+      "5",
+      "-enable-batch-mode",
+      "-index-store-path",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-module-cache-path",
+      "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-parse-as-library",
+      "-sdk",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-g",
+      "-diagnostic-style=llvm",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "todoappyandex",
+      "-driver-use-frontend-path",
+      "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "ColorUtilities" : [
+
+    ],
+    "ColorUtilitiesTests" : [
+      "ColorUtilities"
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "writeCommands" : {
+    "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/Sources/ColorUtilities/ColorUtilities.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/sources"
+    },
+    "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesPackageTests.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/ColorUtilities.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build/ColorUtilitiesTests.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesPackageTests.product/Objects.LinkFileList"
+    },
+    "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/nector/SwiftProjects/ToDoAppYandex/Tests/ColorUtilitiesTests/ColorUtilitiesTests.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilitiesTests.build/sources"
+    },
+    "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Library/Developer/CommandLineTools/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt"
+    }
+  }
+}

@@ -45,4 +45,3 @@ fastlane/test_output
 
 # Build files
 build/
-.build
