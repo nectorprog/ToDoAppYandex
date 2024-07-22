@@ -1,38 +1,50 @@
 import Foundation
+import CocoaLumberjackSwift
+
+actor CancellationManager {
+    var task: URLSessionDataTask?
+    var isActive = true
+    
+    func terminate() {
+        isActive = false
+        task?.cancel()
+    }
+    
+    func assignTask(_ dataTask: URLSessionDataTask) {
+        task = dataTask
+    }
+}
 
 extension URLSession {
-    func dataTask(for urlRequest: URLRequest) throws -> (Data, URLResponse) {
-        let semaphore = DispatchSemaphore(value: 0)
-        let resultQueue = DispatchQueue(label: "com.urlsession.result", attributes: .concurrent)
-        var resultData: Data?
-        var resultResponse: URLResponse?
-        var resultError: Error?
-
-        let task = self.dataTask(with: urlRequest) { data, response, error in
-            resultQueue.async(flags: .barrier) {
-                resultData = data
-                resultResponse = response
-                resultError = error
+    func dataTask(for urlRequest: URLRequest) async throws -> (Data, URLResponse) {
+        let manager = CancellationManager()
+        
+        return try await withTaskCancellationHandler {
+            try await withCheckedThrowingContinuation { continuation in
+                Task {
+                    let task = self.dataTask(with: urlRequest) { data, response, error in
+                        if let error = error {
+                            continuation.resume(throwing: error)
+                        } else if let data = data, let response = response {
+                            DDLogInfo("Запрос успешно выполнен, возвращаем данные")
+                            continuation.resume(returning: (data, response))
+                        } else {
+                            continuation.resume(throwing: URLError(.unknown))
+                        }
+                    }
+                    await manager.assignTask(task)
+                    if await manager.isActive {
+                        task.resume()
+                    } else {
+                        DDLogWarn("Запрос был отменен, выбрасываем ошибку")
+                        continuation.resume(throwing: URLError(.cancelled))
+                    }
+                }
             }
-            semaphore.signal()
-        }
-
-        task.resume()
-
-        // Ожидаем завершения задачи или возникновения ошибки
-        if semaphore.wait(timeout: .now() + 30) == .timedOut {
-            task.cancel()
-            throw NSError(domain: NSURLErrorDomain, code: NSURLErrorTimedOut, userInfo: nil)
-        }
-
-        return try resultQueue.sync {
-            if let error = resultError {
-                throw error
+        } onCancel: {
+            Task {
+                await manager.terminate()
             }
-            guard let data = resultData, let response = resultResponse else {
-                throw NSError(domain: "URLSessionError", code: 0, userInfo: [NSLocalizedDescriptionKey: "No data or response"])
-            }
-            return (data, response)
         }
     }
 }
