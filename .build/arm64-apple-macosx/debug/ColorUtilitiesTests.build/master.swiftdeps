@@ -1,5 +1,0 @@
-version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
-options: "1261ce97ce98d618a04cd486f6c3a914"
-build_time: [1720804641, 884291000]
-inputs:
-  "/Users/nector/SwiftProjects/ToDoAppYandex/Tests/ColorUtilitiesTests/ColorUtilitiesTests.swift": !dirty [1720804517, 980101954]

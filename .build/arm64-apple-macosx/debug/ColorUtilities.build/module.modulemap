@@ -1,4 +1,0 @@
-module ColorUtilities {
-    header "/Users/nector/SwiftProjects/ToDoAppYandex/.build/arm64-apple-macosx/debug/ColorUtilities.build/ColorUtilities-Swift.h"
-    requires objc
-}
