@@ -65,7 +65,7 @@ struct TaskListView: View {
                             .padding()
                     } else {
                         List {
-                            ForEach(viewModel.todoItems.filter { showCompleted || !$0.isReady }, id: \.id) { item in
+                            ForEach(viewModel.todoItems.filter { showCompleted || !$0.isReady }) { item in
                                 HStack {
                                     RadioButtonStyle(isReady: item.isReady, importance: item.importance)
                                         .onTapGesture {
@@ -127,29 +127,30 @@ struct TaskListView: View {
             CalendarViewControllerRepresentable(viewModel: viewModel)
         }
         .sheet(item: $editingItem) { item in
-            TodoItemView(isPresented: .constant(true), viewModel: viewModel, isNewTask: false, editingItem: item) {
-                editingItem = nil
+                    TodoItemView(isPresented: .constant(true), viewModel: viewModel, isNewTask: false, editingItem: item) {
+                        editingItem = nil
+                    }
+                }
+                .alert(item: Binding<ErrorWrapper?>(
+                    get: { viewModel.error.map { ErrorWrapper(error: $0) } },
+                    set: { _ in viewModel.error = nil }
+                )) { errorWrapper in
+                    Alert(title: Text("Ошибка"), message: Text(errorWrapper.error), dismissButton: .default(Text("OK")))
+                }
+                .onAppear {
+                    DDLogInfo("Task list view appeared")
+                    viewModel.loadItems()
+                }
+            }
+            
+            func formatDate(_ date: Date) -> String {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "d MMMM"
+                return formatter.string(from: date)
             }
         }
-        .alert(item: Binding<ErrorWrapper?>(
-            get: { viewModel.error.map { ErrorWrapper(error: $0) } },
-            set: { _ in viewModel.error = nil }
-        )) { errorWrapper in
-            Alert(title: Text("Ошибка"), message: Text(errorWrapper.error), dismissButton: .default(Text("OK")))
-        }
-        .onAppear {
-            DDLogInfo("Task list view appeared")
-        }
-    }
-    
-    func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "d MMMM"
-        return formatter.string(from: date)
-    }
-}
 
-struct ErrorWrapper: Identifiable {
-    let id = UUID()
-    let error: String
-}
+        struct ErrorWrapper: Identifiable {
+            let id = UUID()
+            let error: String
+        }

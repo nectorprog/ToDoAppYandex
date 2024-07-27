@@ -1,8 +1,65 @@
 import Foundation
+import SwiftData
 import CocoaLumberjackSwift
 
 class FileCache {
+    private let modelContainer: ModelContainer
     private(set) var items: [TodoItem] = []
+    
+    init() {
+        do {
+            let schema = Schema([TodoItem.self])
+            let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+            self.modelContainer = try ModelContainer(for: schema, configurations: [modelConfiguration])
+        } catch {
+            fatalError("Could not create ModelContainer: \(error)")
+        }
+    }
+    
+    @MainActor func insert(_ todoItem: TodoItem) {
+        let context = modelContainer.mainContext
+        context.insert(todoItem)
+        do {
+            try context.save()
+            DDLogInfo("Successfully inserted TodoItem: \(todoItem.text)")
+        } catch {
+            DDLogError("Failed to insert TodoItem: \(error)")
+        }
+    }
+    
+    @MainActor func fetch() -> [TodoItem] {
+        let context = modelContainer.mainContext
+        let descriptor = FetchDescriptor<TodoItem>(sortBy: [SortDescriptor(\.createdAt)])
+        do {
+            let items = try context.fetch(descriptor)
+            DDLogInfo("Successfully fetched \(items.count) TodoItems")
+            return items
+        } catch {
+            DDLogError("Failed to fetch TodoItems: \(error)")
+            return []
+        }
+    }
+    
+    @MainActor func delete(_ todoItem: TodoItem) {
+        let context = modelContainer.mainContext
+        context.delete(todoItem)
+        do {
+            try context.save()
+            DDLogInfo("Successfully deleted TodoItem: \(todoItem.text)")
+        } catch {
+            DDLogError("Failed to delete TodoItem: \(error)")
+        }
+    }
+    
+    @MainActor func update(_ todoItem: TodoItem) {
+        let context = modelContainer.mainContext
+        do {
+            try context.save()
+            DDLogInfo("Successfully updated TodoItem: \(todoItem.text)")
+        } catch {
+            DDLogError("Failed to update TodoItem: \(error)")
+        }
+    }
     
     func add(_ item: TodoItem) {
         if !items.contains(where: { $0.id == item.id }) {

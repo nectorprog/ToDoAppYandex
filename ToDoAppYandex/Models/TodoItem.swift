@@ -1,7 +1,9 @@
 import Foundation
+import SwiftData
 
-struct TodoItem: Equatable, Identifiable {
-    let id: String
+@Model
+final class TodoItem: Equatable, Identifiable {
+    @Attribute(.unique) var id: String
     var text: String
     var importance: Importance
     var deadline: Date?
