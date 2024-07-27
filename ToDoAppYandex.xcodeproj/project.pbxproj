@@ -36,6 +36,7 @@
 		CE962B952C384FC000D415C5 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B942C384FC000D415C5 /* UIColor+Extension.swift */; };
 		CE962B992C38996900D415C5 /* RoundedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B982C38996900D415C5 /* RoundedTableViewCell.swift */; };
 		CE962B9B2C38B6DD00D415C5 /* TaskCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE962B9A2C38B6DD00D415C5 /* TaskCategory.swift */; };
+		CE974FF52C5487C2003FF450 /* SwiftData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE974FF42C5487C2003FF450 /* SwiftData.framework */; };
 		CEABDD822C4B28F200CD98E9 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */; };
 		CEABDD832C4B28F200CD98E9 /* DefaultNetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */; };
 		CEBED1E22C25B6BA00EEE8D6 /* ToDoYandexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBED1E12C25B6BA00EEE8D6 /* ToDoYandexApp.swift */; };
@@ -52,6 +53,7 @@
 		CED6AE412C2C094900AF1790 /* FieldOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE3F2C2C094900AF1790 /* FieldOrder.swift */; };
 		CED6AE462C2C60C500AF1790 /* Date+Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE452C2C60C500AF1790 /* Date+Equal.swift */; };
 		CED6AE472C2C60C500AF1790 /* Date+Equal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6AE452C2C60C500AF1790 /* Date+Equal.swift */; };
+		F1EA76EFAFF75B1358FCFA4B /* libPods-ToDoAppYandex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 024B817BD46852215440FDD5 /* libPods-ToDoAppYandex.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		024B817BD46852215440FDD5 /* libPods-ToDoAppYandex.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ToDoAppYandex.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D3FAFB57DA773B566CDA3CD /* Pods-ToDoAppYandex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppYandex.release.xcconfig"; path = "Target Support Files/Pods-ToDoAppYandex/Pods-ToDoAppYandex.release.xcconfig"; sourceTree = "<group>"; };
 		CE0380FC2C2626110052E050 /* FileCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCacheTests.swift; sourceTree = "<group>"; };
 		CE0380FE2C2629430052E050 /* TodoItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemTests.swift; sourceTree = "<group>"; };
 		CE170A002C41A3C100DCDC6A /* ColorUtilities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = ColorUtilities; path = Packages/ColorUtilities; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		CE962B942C384FC000D415C5 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		CE962B982C38996900D415C5 /* RoundedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTableViewCell.swift; sourceTree = "<group>"; };
 		CE962B9A2C38B6DD00D415C5 /* TaskCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCategory.swift; sourceTree = "<group>"; };
+		CE974FF42C5487C2003FF450 /* SwiftData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftData.framework; path = System/Library/Frameworks/SwiftData.framework; sourceTree = SDKROOT; };
 		CEABDD812C4B28F200CD98E9 /* DefaultNetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNetworkingService.swift; sourceTree = "<group>"; };
 		CEABDD862C4B33BB00CD98E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEBED1DE2C25B6B900EEE8D6 /* ToDoAppYandex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoAppYandex.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +106,7 @@
 		CEBED2212C25BCB100EEE8D6 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		CED6AE3F2C2C094900AF1790 /* FieldOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldOrder.swift; sourceTree = "<group>"; };
 		CED6AE452C2C60C500AF1790 /* Date+Equal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Equal.swift"; sourceTree = "<group>"; };
+		E0F0BE8490B9A03F5D5BF657 /* Pods-ToDoAppYandex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoAppYandex.debug.xcconfig"; path = "Target Support Files/Pods-ToDoAppYandex/Pods-ToDoAppYandex.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,8 +116,10 @@
 			files = (
 				CE170A032C41A55D00DCDC6A /* ColorUtilities in Frameworks */,
 				CE759E812C40710500DFD50B /* CocoaLumberjackSwift in Frameworks */,
+				CE974FF52C5487C2003FF450 /* SwiftData.framework in Frameworks */,
 				CE759E832C40710500DFD50B /* CocoaLumberjackSwiftLogBackend in Frameworks */,
 				CE759E7F2C40710500DFD50B /* CocoaLumberjack in Frameworks */,
+				F1EA76EFAFF75B1358FCFA4B /* libPods-ToDoAppYandex.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +133,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A1CF1D707337C57D5EED3FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE974FF42C5487C2003FF450 /* SwiftData.framework */,
+				024B817BD46852215440FDD5 /* libPods-ToDoAppYandex.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CE962B492C35A39300D415C5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +222,7 @@
 				CEBED1F32C25B6BC00EEE8D6 /* ToDoAppYandexTests */,
 				CEBED1DF2C25B6B900EEE8D6 /* Products */,
 				FBB1F8B1D7171F72630CFE9F /* Pods */,
+				3A1CF1D707337C57D5EED3FA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -291,6 +309,8 @@
 		FBB1F8B1D7171F72630CFE9F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				E0F0BE8490B9A03F5D5BF657 /* Pods-ToDoAppYandex.debug.xcconfig */,
+				2D3FAFB57DA773B566CDA3CD /* Pods-ToDoAppYandex.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -302,6 +322,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEBED2042C25B6BC00EEE8D6 /* Build configuration list for PBXNativeTarget "ToDoAppYandex" */;
 			buildPhases = (
+				B4CB4DAD46551E6A9419DFCF /* [CP] Check Pods Manifest.lock */,
 				CE1709FF2C417A7800DCDC6A /* SwiftLint */,
 				CEBED1DA2C25B6B900EEE8D6 /* Sources */,
 				CEBED1DB2C25B6B900EEE8D6 /* Frameworks */,
@@ -370,7 +391,7 @@
 			mainGroup = CEBED1D52C25B6B900EEE8D6;
 			packageReferences = (
 				CE759E7D2C40710500DFD50B /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
-				CE170A012C41A55D00DCDC6A /* XCLocalSwiftPackageReference "ColorUtilities" */,
+				CE170A012C41A55D00DCDC6A /* XCLocalSwiftPackageReference "Packages/ColorUtilities" */,
 			);
 			productRefGroup = CEBED1DF2C25B6B900EEE8D6 /* Products */;
 			projectDirPath = "";
@@ -402,6 +423,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B4CB4DAD46551E6A9419DFCF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ToDoAppYandex-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CE1709FF2C417A7800DCDC6A /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,6 +653,7 @@
 		};
 		CEBED2052C25B6BC00EEE8D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0F0BE8490B9A03F5D5BF657 /* Pods-ToDoAppYandex.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -642,6 +686,7 @@
 		};
 		CEBED2062C25B6BC00EEE8D6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D3FAFB57DA773B566CDA3CD /* Pods-ToDoAppYandex.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -745,7 +790,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		CE170A012C41A55D00DCDC6A /* XCLocalSwiftPackageReference "ColorUtilities" */ = {
+		CE170A012C41A55D00DCDC6A /* XCLocalSwiftPackageReference "Packages/ColorUtilities" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Packages/ColorUtilities;
 		};
