@@ -29,7 +29,6 @@ Carthage/Checkouts
 
 # CocoaPods
 Pods/
-Podfile.lock
 *.xcworkspace
 
 # Fastlane
